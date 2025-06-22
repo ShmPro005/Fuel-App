@@ -1,0 +1,48 @@
+ 
+
+<ion-content>
+  <div class="container3">
+    <div class="common-title">
+      <ion-title>{{ 'CALCULATE_RANGE' | translate }}</ion-title>
+    </div>
+    <!-- <div class="custom-gap"></div> -->
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'FUEL_PRICE' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="fuelPrice" />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'AVERAGE' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="average" />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'FUEL_AMOUNT' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="fuelAmount" />
+    </div>
+
+    <ion-button class="custome-button" (click)="calculateRange()">
+      {{ 'CALCULATE' | translate }}
+    </ion-button>
+ 
+    <ion-card *ngIf="totalRange">
+      <ion-card-header style="padding: 0;">
+        <ion-card-title>{{ 'RESULT' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ 'FUEL_PRICE' | translate }}: {{ fuelPrice | number:'1.2-2' }}
+        <br>
+        {{ 'AVERAGE' | translate }}: {{ average | number:'1.2-2' }}
+        <br>
+        {{ 'FUEL_AMOUNT' | translate }}: {{ fuelAmount | number:'1.2-2' }}
+        <br>
+        <ion-item-divider color="warning">
+          {{ 'CALCULATE_RANGE' | translate }}: {{ totalRange | number:'1.0-0' }}/ KM (Range)
+        </ion-item-divider>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+ 
+</ion-content>

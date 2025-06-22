@@ -1,0 +1,38 @@
+<ion-content>
+  <div class="container3">
+
+    <div class="common-title">
+      <ion-title>{{ 'CALCULATE_FUEL_QUANTITY' | translate }}</ion-title>
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'FUEL_AMOUNT' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="totalFuelPrice" />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'FUEL_PRICE' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="fuelPrice" />
+    </div>
+
+    <ion-button class="custome-button" (click)="calculateFuelQuantity()">
+      {{ 'CALCULATE' | translate }}
+    </ion-button>
+
+    <ion-card *ngIf="liters !== null">
+      <ion-card-header style="padding: 0;">
+        <ion-card-title>{{ 'RESULT' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="card-containt-font">
+        {{ 'FUEL_AMOUNT' | translate }}: {{ totalFuelPrice | number:'1.2-2' }}
+        <br>
+        {{ 'FUEL_PRICE' | translate }}: {{ fuelPrice | number:'1.2-2' }}
+        <br>
+        <ion-item-divider color="warning">
+          {{ 'LITERS' | translate }}: {{ liters | number:'1.2-2' }} L
+        </ion-item-divider>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

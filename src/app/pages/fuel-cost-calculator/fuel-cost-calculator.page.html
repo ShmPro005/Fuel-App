@@ -1,0 +1,76 @@
+ 
+<ion-content>
+  <div class="container2">
+ 
+    <div class="common-title">
+      <ion-title>{{ 'CALCULATE_FUEL_COST' | translate }}</ion-title>
+    </div>
+
+    <!-- <div class="custom-gap"></div> -->
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'DISTANCE' | translate }}</label>
+      <input
+        type="number"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        class="input-group__input"
+        [(ngModel)]="distance"
+      />
+    </div>
+    
+    <div class="input-group">
+      <label class="input-group__label">{{ 'AVERAGE' | translate }}</label>
+      <input
+        type="number"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        class="input-group__input"
+        [(ngModel)]="average"
+      />
+    </div>
+    
+    <div class="input-group">
+      <label class="input-group__label">{{ 'FUEL_PRICE' | translate }}</label>
+      <input
+        type="number"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        class="input-group__input"
+        [(ngModel)]="fuelPrice"
+      />
+    </div>
+    
+
+    <!-- <div class="button-container"> -->
+      <ion-button class="custome-button" (click)="calculateFuelCost()">
+        {{ 'CALCULATE' | translate }}
+      </ion-button>
+    
+      <ion-card *ngIf="result" class="custom-gap">
+        <ion-card-header>
+          <ion-card-title>{{ 'RESULT' | translate }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ 'DISTANCE' | translate }}: {{ distance | number:'1.2-2' }}
+          <br>
+          {{ 'AVERAGE' | translate }}: {{ average | number:'1.2-2' }}
+          <br>
+          {{ 'FUEL_PRICE' | translate }}: {{ fuelPrice | number:'1.2-2' }}
+          <br>
+          <ion-item-divider color="warning">
+            {{ 'TOTAL_COST' | translate }}: {{ result | number:'1.2-2' }}
+          </ion-item-divider>
+        </ion-card-content>
+      </ion-card>
+    
+      <ion-button *ngIf="result" class="custome-button custom-gap" (click)="saveRecord()">
+        {{ 'SAVE' | translate }}
+      </ion-button>
+    <!-- </div> -->
+    
+  </div>
+ 
+
+ 
+</ion-content>

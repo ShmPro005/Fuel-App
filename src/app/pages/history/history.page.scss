@@ -1,0 +1,140 @@
+ 
+  
+  .scrollable-list {
+    background: transparent;
+  }
+  .back {
+    position: fixed; /* Ensures it stays in place even when scrolling */
+    top: 40px; /* Adjust as needed */
+    left: 20px; /* Adjust position from the left */
+    z-index: 1000; /* Ensures it stays above other elements */
+}
+  ion-list {
+    background: transparent;
+  }
+
+  ion-card {
+    margin: 6px 16px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+//   ion-card-content {
+//     display: flex;
+//     flex-direction: column;
+//     position: relative;
+//     padding-bottom: 16px;
+//   }
+  
+  ion-label h2 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 35px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    background: #ffc409;
+    text-align: center;
+    color: black;
+  }
+  
+  ion-label p {
+    font-size: 0.9rem;
+    color: var(--ion-text-color);
+    margin: 4px 0;
+  }
+  
+  ion-item-divider {
+    height: 4px;
+    background-color: var(--ion-color-primary);
+    border-radius: 2px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 0;
+    border-top: 2px solid rgba(255, 255, 255, 0.41);
+    position: relative;
+  }
+  
+  .action-button {
+    font-size: .875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 7px;
+    gap: 4;
+    text-transform: capitalize;
+    width: 42%;
+     img {
+        text-align: center;
+        position: relative;
+        right: 7px;
+        bottom: 1px;
+    
+     }
+  }
+  
+  ion-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+    padding-bottom: 15px; /* Ensures space for the buttons */
+  }
+  
+  
+  .centered-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    color: white;
+    text-align: center;
+  }
+  
+  .white-spinner {
+    color: white !important;
+  }
+  .no-data-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: gray;
+  }
+  
+  .fuel-type-header {
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    // color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .petrol {
+    color: #ac0000; /* Green for Petrol */
+    text-transform: uppercase;
+  }
+  
+  .diesel {
+    color: blueviolet; /* Blue for Diesel */
+  }
+
+ .cng {
+    color: orange; /* Orange for CNG */
+  }
+
+ .red {
+  color: #ffa809;
+ }
+ .card-content-md {
+  padding-top: 0;
+}

@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar class="custom-header-toolbar">
+    <ion-title class="title">Fuel Calculator</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="translationService.changeLanguage()">
+        <img height="35px" src="../../../assets/icon/fuel icon/languages.png" />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [class]="!isNewUser ? 'container_01' : 'container3'">
+
+    <!-- Logo at the Top -->
+    <div class="logo-container" *ngIf="!isNewUser">
+      <img src="../../../assets/image/pmp.png" alt="App Logo" class="app-logo">
+    </div>
+
+    <!-- Title -->
+    <div class="common-title">
+      <ion-title>{{ isNewUser ? ('CREATE_ACCOUNT' | translate) : ('LOGIN' | translate) }}</ion-title>
+    </div>
+
+    <div class="custom-gap"></div>
+
+    <!-- Existing User Login -->
+    <ng-container *ngIf="!isNewUser">
+      <div class="input-group">
+        <label class="input-group__label">{{ 'NAME' | translate }}</label>
+        <input type="text" class="input-group__input" [(ngModel)]="Name" (keypress)="utilService.allowOnlyLetters($event)" />
+      </div>
+
+      <div class="input-group">
+        <label class="input-group__label">{{ 'PHONE_NUMBER' | translate }}</label>
+        <input type="tel" class="input-group__input" [(ngModel)]="phoneNumber" maxlength="10" (keypress)="utilService.allowOnlyNumbers($event)" />
+      </div>
+      <p *ngIf="phoneNumber && !isValidPhone()" class="error-text">{{ 'INVALID_PHONE' | translate }}</p>
+    </ng-container>
+
+    <!-- New User Registration -->
+    <ng-container *ngIf="isNewUser">
+      <div class="input-group">
+        <label class="input-group__label">{{ 'NAME' | translate }}</label>
+        <input type="text" class="input-group__input" [(ngModel)]="Name" (keypress)="utilService.allowOnlyLetters($event)" />
+      </div>
+
+      <div class="input-group">
+        <label class="input-group__label">{{ 'SURNAME' | translate }}</label>
+        <input type="text" class="input-group__input" [(ngModel)]="surName" (keypress)="utilService.allowOnlyLetters($event)" />
+      </div>
+
+      <div class="input-group">
+        <label class="input-group__label">{{ 'ADDRESS_VILLAGE' | translate }}</label>
+        <input type="text" class="input-group__input" [(ngModel)]="village" />
+      </div>
+
+      <div class="input-group">
+        <label class="input-group__label">{{ 'PHONE_NUMBER' | translate }}</label>
+        <input type="tel" class="input-group__input" [(ngModel)]="phoneNumber" maxlength="10" (keypress)="utilService.allowOnlyNumbers($event)" />
+      </div>
+      <p *ngIf="phoneNumber && !isValidPhone()" class="error-text">{{ 'INVALID_PHONE' | translate }}</p>
+
+      <div class="input-group">
+        <label class="input-group__label">{{ 'EMAIL_OPTIONAL' | translate }}</label>
+        <input type="email" class="input-group__input" [(ngModel)]="email" />
+      </div>
+      <p *ngIf="email && !isValidEmail()" class="error-text">{{ 'INVALID_EMAIL' | translate }}</p>
+    </ng-container>
+
+    <!-- Login Button -->
+    <ion-button class="custome-button" (click)="login()" *ngIf="!isNewUser" [disabled]="!Name || !isValidPhone()">
+      {{ 'LOGIN' | translate }}
+    </ion-button>
+
+    <!-- Create Account Button -->
+    <ion-button class="custome-button" (click)="createAccount()" *ngIf="isNewUser" [disabled]="!isFormValid()">
+    {{ 'CREATE' | translate }}
+  </ion-button>
+
+    <!-- 👇 Add message below the login button -->
+    <div class="create-account" *ngIf="!isNewUser">
+      <p (click)="switchToCreateAccount()" class="create-account-text">
+        {{ 'NO_ACCOUNT_MSG' | translate }}
+      </p>
+    </div>
+
+    <!-- Create Account Page -->
+  <div class="back-to-login" *ngIf="isNewUser">
+    <p (click)="switchToLogin()" class="link-text">
+      {{ 'ALREADY_HAVE_ACCOUNT_MSG' | translate }}
+    </p>
+  </div>
+
+  </div>
+</ion-content>

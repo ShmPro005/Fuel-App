@@ -1,0 +1,68 @@
+ion-menu {
+    --width: 250px;
+  }
+
+  .back-laung {
+    position: relative;
+    right: 5px;
+
+  }
+ 
+  ion-item {
+    --border-color: transparent;
+  }
+  // ion-header {
+  //   --background: var(--ion-color-primary);
+  //   --color: #fff;
+  // }
+  ion-tab-button {
+    --ripple-color: transparent; /* Set the ripple color to transparent */
+  }
+  
+  ion-tab-button ion-ripple-effect {
+    display: none; /* Completely hide the ripple element */
+    color: #79d1a3;
+  }
+  
+  
+ion-tab-button.active-tab {
+  // background: -webkit-linear-gradient(90deg, hsla(163, 25%, 54%, 1) 0%, hsl(0deg 0% 100%) 100%);  /* Green background for active tab */
+  background: -webkit-linear-gradient(90deg, hsl(224.31deg 99.18% 80.78% / 57%) 0%, hsl(228.74deg 95.21% 90.13% / 75%) 50%, hsl(146.77deg 100% 93.49% / 40%) 100%);
+  color: #0a0000 !important;  /* Optional: change text color for active tab */
+}
+
+/* Optional: Style for icons when tab is active */
+ 
+/* Optionally add a hover effect for inactive tabs */
+ion-tab-button:not(.active-tab) {
+  background-color: #f5f5f5;  /* Light background for inactive tabs */
+}
+
+
+.fuel-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  background: none;
+  border: none;
+}
+
+.selected-fuel {
+  font-size: 12px;
+  font-weight: bold;
+  color: yellow;
+  transition: 0.3s ease-in-out;
+}
+
+.fuel-icon {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.fuel-selector:hover .selected-fuel {
+  transform: scale(1.1);
+}
+

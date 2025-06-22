@@ -1,0 +1,57 @@
+.language-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers vertically */
+    align-items: center; /* Centers horizontally */
+    text-align: center;
+    height: 100%; /* This is important - makes container take full height */
+    padding: 20px;
+  }
+  
+  .language-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: yellow;
+  }
+  
+  .language-buttons {
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        align-items: center;
+        position: relative;
+        gap: 10px; 
+        padding: 0px 100px;
+        
+  }
+  
+  ion-button {
+    font-size: 20px;
+    height: 50px;
+    width: 100%;
+    font-weight: 700;
+    --border-radius: 12px;
+    --background: linear-gradient(90deg, rgb(81 77 147) 0%, rgb(97 173 40) 0%, rgba(15, 138, 148, 1) 100%, rgba(109, 121, 9, 0.1517857142857143) 100%) !important;
+  }
+
+  .fuel-types {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px 110px;
+    color: white;
+}
+
+.fuel-type {
+    padding: 8px 20px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ff9800, #ff5722);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

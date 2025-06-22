@@ -1,0 +1,31 @@
+ 
+
+<ion-header *ngIf="showHeader" [class.hidden]="!isOnline">
+  <ion-toolbar class="custom-header-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Fuel Calculator</ion-title>
+
+    <ion-buttons slot="end">
+    
+      <ion-button>
+        <img height="30px" src="../../../assets/icon/fuel icon/undo.png" *ngIf="isShowBack && !isHideBack" (click)="goBack()" />
+        <!-- <img height="35px" src="../../../assets/icon/fuel icon/fuel.png" *ngIf="!isShowBack" (click)="translationService.isShowchangeLanguage()" /> -->
+      </ion-button>
+        <ion-button (click)="translationService.changeFuelType()" *ngIf="!isShowBack" class="fuel-selector">
+        <img src="../../../assets/icon/fuel icon/fuel.png" alt="Fuel Icon" class="fuel-icon" />
+        <span class="selected-fuel">{{ selectedFuel | translate }}</span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+  <router-outlet></router-outlet>
+</ion-content>
+
+<!-- offline mode  -->
+<app-offline-message></app-offline-message>

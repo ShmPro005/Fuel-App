@@ -1,0 +1,77 @@
+<ion-menu 
+#menu 
+content-id="main-content" 
+side="start" 
+(ionDidOpen)="onMenuOpen()" 
+(ionDidClose)="onMenuClose()" >
+  
+  <ion-header>
+    <ion-toolbar class="custom-header-toolbar">
+      <div class="profile-container">
+        <img src="../../../assets/image/avatar.jpg" alt="User Avatar" class="profile-avatar">
+        <p class="user-name">{{ userData?.fullName || 'Guest User'}}</p>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div class="container">
+      <ion-list>
+        <ion-menu-toggle auto-hide="true">
+          <ion-item routerLink="/tabs/home" routerDirection="root">
+            <img src="../../../assets/icon/fuel icon/gas-station.png" alt="">
+            <ion-label>{{ 'HOME' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+  
+        <ion-menu-toggle auto-hide="true">
+          <ion-item (click)="translationService.changeLanguage()">
+            <img src="../../../assets/icon/fuel icon/languages.png" alt="">
+            <ion-label>{{ 'CHANGE_LANGUAGE' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+  
+        <ion-menu-toggle auto-hide="true">
+          <ion-item (click)="shareApps()">
+            <img src="../../../assets/icon/share.png" alt="">
+            <ion-label>{{ 'SHARE_APP' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="true">
+          <ion-item routerLink="/tabs/home" routerDirection="root" (click)="otherApplication()">
+            <img src="../../../assets/icon/app.png" alt="">
+            <ion-label>{{ 'OUR_OTHER_APPS' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+  
+        <ion-menu-toggle auto-hide="true">
+          <ion-item routerLink="/tabs/home" routerDirection="root" (click)="writeReview()">
+            <img src="../../../assets/icon/star0.png" alt="">
+            <ion-label>{{ 'WRITE_REVIEW' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+  
+        <ion-menu-toggle auto-hide="true">
+          <ion-item (click)="redirectToPrivacy()">
+            <img src="../../../assets/icon/fuel icon/privacy-policy1.png" alt="">
+            <ion-label>{{ 'PRIVACY_POLICY' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        
+        <!-- Logout Button -->
+        <ion-menu-toggle auto-hide="true">
+          <ion-item (click)="logout()">
+            <img src="../../../assets/icon/fuel icon/logout.png" alt="">
+            <ion-label>{{ 'LOGOUT' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+  
+      </ion-list>
+    </div>
+  </ion-content>
+  
+</ion-menu>
+
+<!-- Main Content -->
+<ion-router-outlet id="main-content"></ion-router-outlet>

@@ -1,0 +1,525 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+html {
+  font-size: calc(100% + 0.5vw);
+}
+body {
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 36, 40;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+  // background: -webkit-linear-gradient(90deg, hsla(208, 67%, 81%, 1) 0%, hsla(37, 65%, 85%, 1) 50%, hsla(301, 65%, 83%, 1) 100%);
+  }
+html, body, ion-app, ion-content {
+  --background: background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 40'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23fff' stroke-width='5' opacity='.1'%3E%3Cpath d='M-345 28s57.5-10 115-10 115 10 115 10S-57.5 38 0 38s115-10 115-10 57.5-10 115-10 115 10 115 10 57.5 10 115 10 115-10 115-10'/%3E%3Cpath d='M-345 14s57.5-10 115-10 115 10 115 10S-57.5 28 0 28s115-10 115-10 57.5-10 115-10 115 10 115 10 57.5 10 115 10 115-10 115-10m-920 22s57.5-10 115-10 115 10 115 10S-57.5 46 0 46s115-10 115-10 57.5-10 115-10 115 10 115 10 57.5 10 115 10 115-10 115-10'/%3E%3C/g%3E%3C/svg%3E%0A"),
+  linear-gradient(80deg, #202, #006);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 55'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23fff' stroke-width='7' opacity='.1'%3E%3Cpath d='M-345 34.5s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 48.3 0 48.3s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 20.7s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 34.5 0 34.5s115-13.8 115-13.8S172.5 6.9 230 6.9s115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8m-920 27.6s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 62.1 0 62.1s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 6.9s57.5-13.8 115-13.8S-115 6.9-115 6.9-57.5 20.7 0 20.7 115 6.9 115 6.9 172.5-6.9 230-6.9 345 6.9 345 6.9s57.5 13.8 115 13.8S575 6.9 575 6.9'/%3E%3Cpath d='M-345-6.9s57.5-13.8 115-13.8S-115-6.9-115-6.9-57.5 6.9 0 6.9 115-6.9 115-6.9s57.5-13.8 115-13.8S345-6.9 345-6.9 402.5 6.9 460 6.9 575-6.9 575-6.9m-920 69s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 75.9 0 75.9s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3C/g%3E%3C/svg%3E%0A"),
+    linear-gradient(80deg, #202, #006);
+    background-size: 50vw auto, 100% 100%;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+}
+
+  .tabbar {
+    background-color: #1e1e2f; /* Tab background matching the gradient */
+  }
+ 
+/* src/app/pages/home/home.page.scss */
+/* Or place this in src/theme/variables.scss for global access */
+
+.custom-header-toolbar {
+  --background: linear-gradient(90deg, rgb(81 77 147) 0%, rgb(2 163 97) 0%, rgba(15, 138, 148, 1) 100%, rgba(109, 121, 9, 0.1517857142857143) 100%) !important;
+  color: white; /* Ensures text is visible on the gradient background */
+}
+
+/* Optional: Text Shadow for Enhanced Readability */
+// .custom-card-color {
+//  --background: linear-gradient(90deg, rgb(81 77 147) 0%, rgb(2 163 97) 0%, rgba(15, 138, 148, 1) 100%, rgba(109, 121, 9, 0.1517857142857143) 100%) !important;
+//  ion-card-title {
+//   color: #ffffff;
+// }
+// }
+.common-gredient-color {
+  --background: linear-gradient(90deg, rgb(81 77 147) 0%, rgb(2 163 97) 0%, rgba(15, 138, 148, 1) 100%, rgba(109, 121, 9, 0.1517857142857143) 100%) !important;
+}
+.card-content-md {
+  font-size: 16px;
+}
+ion-card-header+.card-content-md {
+  padding-top: 5px;
+}
+ion-item-divider {
+  margin: 5px 0px;
+  font-weight: 600;
+  font-size: 18px;
+}
+ion-card {
+  --background: linear-gradient(90deg, rgb(81 77 147) 0%, rgb(2 163 97) 0%, rgba(15, 138, 148, 1) 100%, rgba(109, 121, 9, 0.1517857142857143) 100%) !important;
+  color: #ffffff;
+  border-radius: 7px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  }
+  ion-card-title {
+    color: #ffffff;
+    font-size: 16px;
+  }
+  ion-card-header {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // padding: 10px 0;
+    ion-icon {
+      margin-right: 8px;
+      font-size: 24px;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+  .card-list {
+    background: transparent;
+  }
+  
+  .btn-gradient {
+    --background: -webkit-linear-gradient(90deg, hsl(224.31deg 98.39% 51.19%) 0%, hsl(279.69deg 36.05% 52.47%) 50%, hsla(301, 65%, 83%, 1) 100%);
+  }
+ 
+  .custome-button {
+    --background :linear-gradient(90deg, rgb(81 77 147) 0%, rgb(2 163 97) 0%, rgba(15, 138, 148, 1) 100%, rgba(109, 121, 9, 0.1517857142857143) 100%) !important;
+    // --background :-webkit-linear-gradient(90deg, rgb(1 165 149) 0%, hsl(279.69deg 36.05% 52.47%) 50%, hsla(301, 65%, 83%, 1) 100%);
+    // --background: -webkit-linear-gradient(90deg, hsl(224.31deg 98.39% 51.19%) 0%, hsl(279.69deg 36.05% 52.47%) 50%, hsla(301, 65%, 83%, 1) 100%);
+    --background-hover: #9ce0be;
+    --background-activated: #88f4be;
+    --background-focused: #88f4be;
+  
+    --color: white;
+    width: 100%;
+    font-weight: 600;
+    --border-radius: 6px;
+ 
+    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+  
+    --ripple-color: deeppink;
+  
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+  
+}
+
+.alert-modal-class .alert-wrapper {
+  text-align: center; /* Center-align content */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Shadow */
+}
+
+.alert-modal-class .alert-title {
+  font-weight: bold; /* Bold title */
+  color:red; /* Primary color for title */
+  font-size: 18px; /* Adjust font size */
+  display: flex;
+  justify-content: center;
+}
+
+.alert-modal-class .alert-message {
+  font-size: 13px;
+  color: #666;
+  padding: 0;
+}
+
+.alert-modal-class .alert-button-primary {
+  background: var(--ion-color-primary); /* Primary color background */
+  color: #fff; /* White text */
+  font-weight: bold;
+  border-radius: 8px; /* Rounded button */
+  width: 100px;
+  .alert-button-inner.sc-ion-alert-md {
+    -ms-flex-pack: end;
+    justify-content: center;
+}
+}
+.alert-button-group.sc-ion-alert-md {
+  -webkit-padding-start: 8px;
+  padding-inline-start: 8px;
+  -webkit-padding-end: 8px;
+  padding-inline-end: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  --ms-flex-wrap: wrap-reverse;
+  /* flex-wrap: wrap-reverse; */
+  -ms-flex-pack: end;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.alert-head.sc-ion-alert-md {
+  -webkit-padding-start: 23px;
+  padding-inline-start: 23px;
+  -webkit-padding-end: 23px;
+  padding-inline-end: 23px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: start;
+}
+
+.alert-title.sc-ion-alert-md {
+  color: var(--ion-text-color, #000);
+  font-size: 1.25rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  text-align: start;
+  color: red;
+}
+
+.alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
+  padding-top: 10px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  padding: 8px 2px;
+  margin: 0px 15px;
+}
+.alert-button-group.sc-ion-alert-md {
+  /* padding-inline-start: 8px; */
+  /* padding-inline-end: 8px; */
+  /* padding-top: 8px; */
+  /* padding-bottom: 8px; */
+  box-sizing: border-box;
+  --ms-flex-wrap: wrap-reverse;
+  /* flex-wrap: wrap-reverse; */
+  justify-content: center;
+  margin: 5px 0;
+  padding: 0;
+}
+
+.alert-button.sc-ion-alert-md {
+  border-radius: 2px;
+  -webkit-margin-start: 0;
+  margin-inline-start: 0;
+  -webkit-margin-end: 8px;
+  margin-inline-end: 8px;
+  margin-top: 0;
+  margin-bottom: 0;
+  -webkit-padding-start: 10px;
+  padding-inline-start: 10px;
+  -webkit-padding-end: 10px;
+  padding-inline-end: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  background: linear-gradient(90deg, rgb(81 77 147) 0%, rgb(2 163 97) 0%, rgba(15, 138, 148, 1) 100%, rgba(109, 121, 9, 0.1517857142857143) 100%) !important;
+  color: white;
+  font-weight: 700;
+  text-align: end;
+  text-transform: uppercase;
+  padding: 6px 24px;
+  overflow: hidden;
+  margin: 11px 8px;
+}
+
+.main-content {
+  margin-top: 50px;  
+}
+.main-crop-content {
+  margin-top: 70px;  
+}
+.loader-modal {
+  --backdrop-opacity: 60%;
+  --background: transparent !important;
+}
+
+.top-exit-popover {
+  --top: 10px !important; /* Adjust distance from the top */
+  --transform: translateY(0) !important; /* Reset any centering transform */
+  --width: 90%; /* Optional: Adjust width */
+  --border-radius: 8px; /* Optional: Add rounded corners */
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Optional: Add shadow */
+  left: 5%; /* Center horizontally with some margin */
+  margin: 0 auto;
+ --width: 300px;
+}
+
+.custom-popover-class {
+  --width: 300px; /* Adjust this value to your desired width */
+}
+
+ion-header {
+  --webkit-box-shadow:none;
+  box-shadow: none !important;
+}
+
+/* Remove the white background */
+.custom-loading .loading-wrapper {
+  background: transparent;
+  box-shadow: none; /* Remove box shadow */
+}
+
+/* Darken the page background */
+.custom-loading::part(backdrop) {
+  background: rgba(0, 0, 0, 0.7); /* Adjust darkness as needed */
+}
+
+/* Center the spinner without a message */
+.custom-loading .loading-spinner {
+  margin: auto;
+}
+
+.custom-loading .loading-content {
+  color: white; /* Optional: Set text color */
+  font-size: 16px; /* Adjust message size */
+}
+
+/* Spinner customization (optional) */
+.custom-loading .loading-spinner svg {
+  width: 50px;
+  height: 50px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition-duration: 0.001s !important;
+  }
+}
+
+ion-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1; /* Takes up remaining space */
+  background: linear-gradient(100deg, #402, #006);
+  padding: 150px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  // gap: 5px;
+  align-items: center;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 55'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23fff' stroke-width='7' opacity='.1'%3E%3Cpath d='M-345 34.5s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 48.3 0 48.3s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 20.7s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 34.5 0 34.5s115-13.8 115-13.8S172.5 6.9 230 6.9s115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8m-920 27.6s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 62.1 0 62.1s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 6.9s57.5-13.8 115-13.8S-115 6.9-115 6.9-57.5 20.7 0 20.7 115 6.9 115 6.9 172.5-6.9 230-6.9 345 6.9 345 6.9s57.5 13.8 115 13.8S575 6.9 575 6.9'/%3E%3Cpath d='M-345-6.9s57.5-13.8 115-13.8S-115-6.9-115-6.9-57.5 6.9 0 6.9 115-6.9 115-6.9s57.5-13.8 115-13.8S345-6.9 345-6.9 402.5 6.9 460 6.9 575-6.9 575-6.9m-920 69s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 75.9 0 75.9s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3C/g%3E%3C/svg%3E%0A"),
+  linear-gradient(80deg, #202, #006);
+  // background-position: 50% 50%;
+  // animation: background-move 10s linear infinite;
+  background-size: 50vw auto, 100% 100%;
+  z-index: 999;
+
+}
+
+.container2 {
+  flex: 1;
+  padding-top: 60px;
+  background: linear-gradient(100deg, #402, #006);
+  padding: 75px 20px;
+  /* margin: 0px 1px; */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  gap: 12px;
+  align-items: center;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 55'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23fff' stroke-width='7' opacity='.1'%3E%3Cpath d='M-345 34.5s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 48.3 0 48.3s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 20.7s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 34.5 0 34.5s115-13.8 115-13.8S172.5 6.9 230 6.9s115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8m-920 27.6s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 62.1 0 62.1s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 6.9s57.5-13.8 115-13.8S-115 6.9-115 6.9-57.5 20.7 0 20.7 115 6.9 115 6.9 172.5-6.9 230-6.9 345 6.9 345 6.9s57.5 13.8 115 13.8S575 6.9 575 6.9'/%3E%3Cpath d='M-345-6.9s57.5-13.8 115-13.8S-115-6.9-115-6.9-57.5 6.9 0 6.9 115-6.9 115-6.9s57.5-13.8 115-13.8S345-6.9 345-6.9 402.5 6.9 460 6.9 575-6.9 575-6.9m-920 69s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 75.9 0 75.9s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3C/g%3E%3C/svg%3E%0A"), linear-gradient(80deg, #202, #006);
+  // background-position: 50% 50%; 
+  // animation: background-move 10s linear infinite;
+  background-size: 50vw auto, 100% 100%;
+  z-index: 999;
+}
+.container3 {
+  flex: 1; /* Takes up remaining space */
+  padding-top: 60px; /* Enough to clear the fixed header */
+  background: linear-gradient(100deg, #402, #006);
+  padding: 75px 20px;
+  // height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  gap: 15px;
+  align-items: center;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 55'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23fff' stroke-width='7' opacity='.1'%3E%3Cpath d='M-345 34.5s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 48.3 0 48.3s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 20.7s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 34.5 0 34.5s115-13.8 115-13.8S172.5 6.9 230 6.9s115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8m-920 27.6s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 62.1 0 62.1s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 6.9s57.5-13.8 115-13.8S-115 6.9-115 6.9-57.5 20.7 0 20.7 115 6.9 115 6.9 172.5-6.9 230-6.9 345 6.9 345 6.9s57.5 13.8 115 13.8S575 6.9 575 6.9'/%3E%3Cpath d='M-345-6.9s57.5-13.8 115-13.8S-115-6.9-115-6.9-57.5 6.9 0 6.9 115-6.9 115-6.9s57.5-13.8 115-13.8S345-6.9 345-6.9 402.5 6.9 460 6.9 575-6.9 575-6.9m-920 69s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 75.9 0 75.9s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3C/g%3E%3C/svg%3E%0A"),
+  linear-gradient(80deg, #202, #006);
+  // background-position: 50% 50%;
+  // animation: background-move 10s linear infinite;
+  background-size: 50vw auto, 100% 100%;
+  z-index: 999;
+}
+ 
+.container4 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start; /* Adjust content alignment if necessary */
+  background-size: 100vw auto, 100% 100%;
+}
+
+
+@keyframes background-move {
+  0% { background-position: 0 0, 0 0; }
+  100% { 
+    background-position: 100vw 0, 0 0;
+    background-position: unquote('max(100vw, 40em)')  0, 0 0;
+  }
+}
+
+.input-group {
+  width: 100%;
+  max-width: 20em;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+
+  @supports (mix-blend-mode: darken) {
+    position: relative;
+    mix-blend-mode: lighten;
+
+    &__label {
+      position: absolute;
+      left: 3em;
+      top: -0.28em;
+      background: #000;
+      text-transform: capitalize;
+
+    }
+  }
+  &__labelSmall {
+    padding: 0 0.5em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: #ccd;
+    // color: rgba(255, 220, 255, 0.6);
+    cursor: pointer;
+    text-transform: capitalize;
+
+  }
+
+  &__label {
+    padding: 0 0.5em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: #ccd;
+    // color: rgba(255, 220, 255, 0.6);
+    cursor: pointer;
+    text-transform: capitalize;
+
+  }
+  
+
+
+  &__input {
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1;
+    border-style: none;
+    outline: none;
+    // height calc line-height + (vertical-padding * 2) + (vertical-border * 2)
+    height: calc(1em + 1.2em + 0.5em);
+    width: 100%;
+    padding: 0.8em 1em;
+    border: 0.25em solid transparent;
+    background-image: linear-gradient(#000, #000),
+      linear-gradient(120deg, #f09 0%, #0ff 50%, #9f0 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 1.8em;
+    background-size: 200% 100%;
+    transition: background-position 0.8s ease-out;
+    
+    &:hover {
+      background-position: 100% 0;
+    }
+
+    // &:focus {
+    //   outline: 2px dashed #ad2b89;
+    //   outline-offset: 0.5em;
+    // }
+  }
+}
+.common-title {
+ 
+  ion-title {
+    font-size: 30px;
+    color: #e4e403;
+    font-family: sans-serif;
+    font-weight: 700;
+  }
+}
+
+ion-list {
+  position: absolute;
+  top: 55px;
+  width: 100%;
+}
+ion-title {
+  font-family: sans-serif;
+}
+.back {
+  position: absolute;
+  top: 70px;
+  left: 28px;
+  img{
+    height: 30px;
+  }
+}
+ion-spinner.sc-ion-loading-md {
+  color: #44c74d;
+}

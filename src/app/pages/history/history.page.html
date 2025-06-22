@@ -1,0 +1,46 @@
+<ion-content>
+  <div class="container4">
+    <ion-list *ngIf="!utilService.isLoading">
+      <ion-item-sliding *ngFor="let record of records">
+        <ion-card>
+          <!-- Add fuelType at the top with background color -->
+          <ion-card-content>
+            <div class="list-container">
+              <div class="fuel-type-header" [ngClass]="{'petrol': record.fuelType === 'PETROL', 'cng': record.fuelType === 'CNG', 'diesel': record.fuelType === 'DIESEL'}">
+                <img height="18px" src="../../../assets/icon/fuel icon/fuel.png" alt="">&nbsp;  <ion-label>   <span class="fuel-type">{{ record.fuelType }}</span>    ⛽</ion-label>
+              </div>
+              <ion-label>
+                <h2>{{ 'FUEL_COST' | translate }}: {{ record.totalCost | number:'1.2-2' }}</h2>
+                <p>{{ 'DISTANCE' | translate }}: {{ record.distance }} {{ 'KM' | translate }}</p>
+                <p>{{ 'AVERAGE' | translate }}: {{ record.average }} {{ 'KM_PER_LITER' | translate }}</p>
+                <p>{{ 'FUEL_PRICE' | translate }}: {{ record.fuelPrice | number:'1.2-2' }} {{ 'PER_LITER' | translate }}</p>
+                <p>{{ 'DATE' | translate }}: {{ record.date | date:'short' }}</p>
+              </ion-label>
+            </div>
+            <div class="button-container">
+              <ion-button fill="clear" class="action-button custome-button" (click)="deleteRecord(record); $event.stopPropagation()">
+                <img src="../../../assets/icon/delete_4.png" alt="" height="20px">
+                Delete
+              </ion-button>
+              <ion-button fill="clear" class="action-button custome-button" (click)="shareRecord(record); $event.stopPropagation()">
+                <img src="../../../assets/icon/share1.png" alt="" height="20px">
+                Share
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-card *ngIf="!utilService.isOnline && records.length === 0">
+      <ion-card-content>
+        {{ 'NO_RECORDS' | translate }}
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Show Message if No Records Are Available -->
+    <div class="no-data-message" *ngIf="!utilService.isLoading && records.length === 0">
+      <p>{{ 'NO_RECORDS' | translate }}</p>
+    </div>
+  </div>
+</ion-content>

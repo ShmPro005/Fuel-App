@@ -1,0 +1,36 @@
+.offline-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(33 29 29 / 96%);
+    --ion-background-color: transparent;
+    color: white;
+    font-size: 16px;
+    z-index: 9999;
+    padding: 16px;
+    flex-direction: column;
+  }
+
+  .text-line2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    position: absolute;
+    top: 48px;
+    bottom: 0px;
+  }
+  
+  .error-icon {
+    position: absolute;
+    top: 90px;
+    img {
+      height: 280px;
+      width: 280px;
+    }
+  }

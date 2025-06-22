@@ -1,0 +1,38 @@
+ion-list {
+    position: absolute;
+    top: 55px;
+    width: 100%;
+    background: transparent;
+    ion-item {
+        --background: transparent;
+        color: white;
+    }
+  }
+ 
+  .user-name {
+    text-transform: capitalize;
+  }
+  .profile-container {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+
+  }
+  
+  .profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  ion-item img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  ion-label {
+    font-size: 16px;
+  }
+  

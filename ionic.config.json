@@ -1,0 +1,7 @@
+{
+  "name": "Fuel App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

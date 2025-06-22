@@ -1,0 +1,237 @@
+  async openTermsModal() {
+    const modal = await this.modalController.create({
+      component: ModalTermsPage,
+      cssClass: 'modal-terms',
+    });
+  
+    await modal.present();
+    const { data } = await modal.onDidDismiss();
+    if (data) {
+      this.isShowLoginOption = true;
+      this.modalController.dismiss();
+    }
+  }
+  -- create page for modal 
+
+// .modal-terms {
+//   --ion-safe-area-top: 0;
+//   --height: 260px;
+//   --width: 300px;
+//   --border-radius: 20px;
+//   margin: 0 auto;
+//   min-height: 245px;
+//   z-index: 10;
+// }
+
+
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AlertController, Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
+import {
+  AdLoadInfo,
+  AdMob,
+  AdMobError,
+  AdMobRewardItem,
+  AdmobConsentStatus,
+  BannerAdOptions,
+  BannerAdPosition,
+  BannerAdSize,
+  InterstitialAdPluginEvents,
+  RewardAdOptions,
+  RewardAdPluginEvents} from '@capacitor-community/admob';
+import { SafeArea } from 'capacitor-plugin-safe-area';
+import { LoadingService } from './loading.service';
+ 
+@Injectable()
+export class AdsService {
+
+  isBannerShown: boolean = false; // Track banner state
+  isBannerHidden: boolean = false;
+  
+  appLovin: any;
+  marginTop = 0;
+ 
+
+  // Android Ads ID 
+  ANDROID_ADMOB_BANNER_ID = 'ca-app-pub-1047405219515945/2436397932';
+  ANDROID_ADMOB_REWARDED_ID = 'ca-app-pub-1047405219515945/6337782799';
+  ANDROID_ADMOB_INTERSTITAIL_ID = 'ca-app-pub-1047405219515945/4419046522';
+  ANDROID_ADMOB_NATIVE_AD_ID = 'ca-app-pub-1047405219515945/2690181829';
+  
+  // IOS Ads ID 
+  IOS_ADMOB_BANNER_ID = 'ca-app-pub-1047405219515945/2436397932';
+  IOS_ADMOB_REWARDED_ID = 'ca-app-pub-1047405219515945/6337782799';
+  IOS_ADMOB_INTERSTITAIL_ID = 'ca-app-pub-1047405219515945/4419046522';
+  IOS_ADMOB_NATIVE_AD_ID = 'ca-app-pub-1047405219515945/2690181829';
+
+  constructor(
+    public http: HttpClient,
+    public alertController: AlertController,
+    public router: Router,
+    public platform: Platform,
+    public loadingService: LoadingService
+  ) {}
+
+  async initializeAdMobSDK() {
+     await AdMob.initialize();
+
+    const [trackingInfo, consentInfo] = await Promise.all([
+      AdMob.trackingAuthorizationStatus(),
+      AdMob.requestConsentInfo(),
+    ]);
+  
+    if (trackingInfo.status === 'notDetermined') {
+      /**
+       * If you want to explain TrackingAuthorization before showing the iOS dialog,
+       * you can show the modal here.
+       * ex)
+       * const modal = await this.modalCtrl.create({
+       *   component: RequestTrackingPage,
+       * });
+       * await modal.present();
+       * await modal.onDidDismiss();  // Wait for close modal
+       **/
+  
+      await AdMob.requestTrackingAuthorization();
+    }
+  
+    const authorizationStatus = await AdMob.trackingAuthorizationStatus();
+    if (
+      authorizationStatus.status === 'authorized' &&
+      consentInfo.isConsentFormAvailable &&
+      consentInfo.status === AdmobConsentStatus.REQUIRED
+    ) {
+      await AdMob.showConsentForm();
+    }
+  }
+  
+
+  async showConsent() {
+    const consentInfo = await AdMob.requestConsentInfo();
+
+    if (
+      consentInfo.isConsentFormAvailable &&
+      consentInfo.status === AdmobConsentStatus.REQUIRED
+    ) {
+      const { status } = await AdMob.showConsentForm();
+    }
+  }
+
+  
+  async showAdMobBanner() {
+    if (this.isBannerShown) {
+      // console.log('Banner ad is already shown');
+      return;
+    }
+
+    try {
+ 
+      const options: BannerAdOptions = {
+        adId: this.platform.is('ios')
+          ? this.IOS_ADMOB_BANNER_ID
+          : this.ANDROID_ADMOB_BANNER_ID,
+        adSize: BannerAdSize.FULL_BANNER,
+        position: BannerAdPosition.BOTTOM_CENTER,
+        // margin: 55,
+        // isTesting: false,
+      };
+      AdMob.showBanner(options);
+  
+      this.isBannerShown = true;
+
+      // console.log('Banner ad displayed successfully');
+    } catch (error) {
+      console.error('Failed to show banner ad:', error);
+    }
+  }
+
+  hideAdMobBanner(isResume:boolean) {
+    // console.log('-----hideAdMobBanner-----')
+       if (isResume) {
+        this.isBannerHidden = true;
+        AdMob.hideBanner();
+      //  console.log('No banner to hide');
+     }else if(!isResume){
+      this.resumeAdMobBanner();
+     }
+  }
+
+   resumeAdMobBanner() { 
+    // console.log('-----resumeAdMobBanner-----');
+    try {
+      console.log('resumeAdMobBanner banner ad...');
+      AdMob.resumeBanner();
+      this.isBannerHidden = false;
+      console.log('resumeAdMobBanner ad successfully');
+    } catch (error) {
+      console.error('Failed to hide banner ad:', error);
+    }
+  }
+
+  removeAdMobBanner() {
+    AdMob.removeBanner();
+    this.isBannerShown = false;
+  }
+
+  async showAdMobRewardedAd() {
+    this.loadingService.startLoader();
+    AdMob.addListener(RewardAdPluginEvents.Loaded, (info: AdLoadInfo) => {
+      // console.log(info);
+      this.loadingService.stopLoader();
+    });
+
+    AdMob.addListener(
+      RewardAdPluginEvents.FailedToLoad,
+      (error: AdMobError) => {
+        // console.log(error);
+        this.loadingService.stopLoader();
+      },
+    );
+
+    const updateToken = await AdMob.addListener(
+      RewardAdPluginEvents.Rewarded,
+      (rewardItem: AdMobRewardItem) => {
+        console.log(rewardItem);
+        updateToken.remove();
+      }
+    );
+
+    const options: RewardAdOptions = {
+      adId: this.platform.is('ios')
+        ? this.IOS_ADMOB_REWARDED_ID
+        : this.ANDROID_ADMOB_REWARDED_ID,
+      // isTesting: false,
+    };
+    await AdMob.prepareRewardVideoAd(options);
+    await AdMob.showRewardVideoAd();
+  }
+
+  async showAdMobInterstitialAd() { //show full screen ads
+    AdMob.addListener(InterstitialAdPluginEvents.Loaded, (info: AdLoadInfo) => {
+      // console.log(info);
+    });
+
+    const options: RewardAdOptions = {
+      adId: this.platform.is('ios')
+        ? this.IOS_ADMOB_INTERSTITAIL_ID
+        : this.ANDROID_ADMOB_INTERSTITAIL_ID,
+      // isTesting: false,
+    };
+    await AdMob.prepareInterstitial(options);
+    await AdMob.showInterstitial();
+  }
+
+  async showAdMobNativeAd() { //show custome ads
+    
+  }
+
+  viewAd(id: string) {
+     
+  }
+
+  async getSafeArea() {
+    return await SafeArea.getSafeAreaInsets();
+  }
+}

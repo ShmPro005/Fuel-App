@@ -1,0 +1,36 @@
+
+
+<ion-content>
+  <div class="container3">
+    <div class="common-title">
+      <ion-title>{{ 'CALCULATE_DISTANCE_TIME' | translate }}</ion-title>
+    </div>
+    <div class="custom-gap"></div>
+    <div class="input-group">
+      <label class="input-group__label"  >{{ 'DISTANCE' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="distance" />
+    </div>
+    <div class="input-group">
+      <label class="input-group__label"  >{{ 'SPEED' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="speed" />
+    </div>
+
+    <ion-button class="custome-button" (click)="calculateTime()">
+      {{ 'CALCULATE' | translate }}
+    </ion-button>
+  
+    <ion-card *ngIf="hours">
+      
+      <ion-card-header>
+        <ion-card-title>{{ 'RESULT' | translate }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content >
+        {{ 'HOURS' | translate }}: <span class="child-text">{{ hours }}</span>, 
+        {{ 'MINUTES' | translate }}: <span class="child-text">{{ minutes }}</span>, 
+        {{ 'SECONDS' | translate }}: <span class="child-text">{{ seconds }}</span>
+      </ion-card-content>
+    </ion-card>
+    </div>
+    
+</ion-content>

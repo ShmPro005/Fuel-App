@@ -1,0 +1,232 @@
+ 
+/* Center the card on the page */
+// ion-card {
+//   width: 100%;
+//   max-width: 300px; 
+//   // margin: 8px 0;
+//   display: flex;
+//   justify-content: flex-start;
+//   text-align: start;
+// }
+ion-card {
+  width: 100%;
+  // max-width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  text-align: start;
+  transition: height 0.3s ease-in-out; // Smooth transition effect
+
+  /* Default height */
+  height: 120px;
+
+  /* Adjust height based on screen sizes */
+  
+}
+@media screen and (max-height: 920px) {
+  ion-card ion-card-title {
+    font-size: 18px ;  
+  }
+  .center-content img.icon-left {
+    height: 45px;  
+    width: auto;        
+    object-fit: contain;    
+  }
+  
+}
+@media (max-height: 800px) {
+  ion-card ion-card-title {
+    font-size: 15px ; /* Ensure it overrides other styles */
+  }
+  .center-content img.icon-left {
+    height: 35px;  
+    width: auto;        
+    object-fit: contain;    
+  }
+  
+}
+
+@media (max-height: 600px) {
+  ion-card ion-card-title {
+    font-size: 15px ; /* Ensure it overrides other styles */
+  }
+  .center-content img.icon-left {
+    height: 35px;  
+    width: auto;        
+    object-fit: contain;    
+  }
+  
+}
+
+@media (max-height: 400px) {
+  ion-card ion-card-title {
+    font-size: 14px ; /* Ensure it overrides other styles */
+  }
+  .center-content img.icon-left {
+    height: 35px;  
+    width: auto;        
+    object-fit: contain;    
+  }
+  
+}
+/* Center the header content */
+ion-card-header {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: flex-start;     /* Vertically center the content */
+  padding-left: 30px;
+}
+// ion-card ion-card-title {
+//   color: #ffffff;
+//   font-size: 15px;
+// }
+/* Arrange image (left) and text (right) */
+.center-content {
+  display: flex;
+  flex-direction: row;     /* Image on left, text on right */
+  align-items: center;     /* Vertically center image and text */
+  justify-content: center; /* Horizontally center the row within the card */
+  gap: 10px;               /* Space between image and text */
+}
+
+/* Style the image on the left */
+
+/* Style the text on the right */
+.center-content span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Adjust color as needed */
+  text-align: left; /* Optional: Align text to the left within its space */
+}
+ 
+/////animation////////
+.car-movement {
+  overflow: hidden;
+  background: url('/assets/icon/fuel icon/animation/bg.jpg');
+  font-size: 40px;
+  height: 80px;
+  position: absolute;
+  top: 57px;
+  width: 100%;
+    background-position: bottom left;
+  animation: driving 50s linear infinite;
+}
+
+.car-movement > .car {
+  position: relative;
+  display: inline-block;
+  animation: linear infinite;
+  animation-name: run;
+  animation-duration: 20s;
+  bottom: 16px;
+}
+.car-movement > .bike {
+  position: relative;
+  display: inline-block;
+  animation: linear infinite;
+  animation-name: run;
+  animation-duration: 10s;
+  top: 25px;
+
+}
+.car-movement > .Tractor {
+  position: relative;
+  display: inline-block;
+  animation: linear infinite;
+  animation-name: run;
+  animation-duration: 20s;
+  bottom: 8px;
+
+}
+.car-movement > .car2 {
+  position: relative;
+  display: inline-block;
+  animation: linear infinite;
+  animation-name: run;
+  animation-duration: 20s;
+  top: 15px;
+
+}
+
+@keyframes run {
+  0% {
+    transform: rotateY(180deg);
+    left: -100px;
+  }
+  50% {
+    transform: rotateY(180deg);
+    left: 100%;
+  }
+  51% {
+    transform: rotateY(0deg);
+    left: calc(100% + 100px);
+  }
+  100% {
+    transform: rotateY(0deg);
+    left: -100px;
+  }}
+
+// .background {
+//   height: 100vh;
+//   background: url('/assets/icon/fuel icon/animation/bg.jpg');
+//   background-position: bottom left;
+//   animation: driving 50s linear infinite;
+// }
+// .car {
+//   position: absolute;
+//   left: 31px;
+//   bottom: -31px;
+//   width: 127px;
+// }
+
+// .motorbike {
+// 	position: absolute;
+// 	left: 170px;
+// 	bottom: 55px;
+// 	width: 100px;
+// }
+
+// @keyframes driving {
+// 	from { background-position: bottom left; }
+
+// 	to { background-position: bottom right; }
+// }
+
+ion-item {
+  --background: transparent;
+  color: white;
+  img {
+    height: 130px;
+  }
+}
+
+.fuel-types {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.fuel-type {
+  padding: 8px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f8b47c, #ff8800);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.fuel-type:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #ff8800, #d66c00);
+}
+
+ion-icon {
+  font-size: 18px;
+  color: white;
+}

@@ -1,0 +1,30 @@
+<ion-content class="language-container">
+  <div class="fuel-img">
+    <img src="../../../assets/image/pmp.png" alt="Fuel Selection">
+  </div>
+
+  <!-- Show language selection first -->
+  <div *ngIf="showLanguageSelection">
+    <div class="language-header">
+      <h1>{{ 'SELECT_LANGUAGE' | translate }}</h1>
+    </div>
+
+    <div class="language-buttons">
+      <ion-button (click)="selectLanguage('en')">English</ion-button>
+      <ion-button (click)="selectLanguage('hi')">हिंदी</ion-button>
+      <ion-button (click)="selectLanguage('gu')">ગુજરાતી</ion-button>
+    </div>
+  </div>
+
+  <!-- Show fuel selection after language is selected -->
+  <div *ngIf="showFuelSelection">
+    <div class="language-header">
+      <h1>{{ 'SELECT_FUEL' | translate }}</h1>
+    </div>
+    <div class="fuel-types">
+      <span class="fuel-type" (click)="selectFuel('CNG')">{{ 'CNG' | translate }}</span>
+      <span class="fuel-type" (click)="selectFuel('PETROL')">{{ 'PETROL' | translate }}</span>
+      <span class="fuel-type" (click)="selectFuel('DIESEL')">{{ 'DIESEL' | translate }}</span>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,83 @@
+ 
+
+<ion-content [fullscreen]="true" class="container">
+  <div class="car-movement">
+    <div class="car">🚕</div>
+    <div class="bike">🏍️ </div>
+    <div class="Tractor">🚜 </div>
+    <div class="car2">🚗 </div>
+  </div>
+
+
+  <div class="card-grid container">
+
+    <ion-card (click)="goToFuelCostCalculator()" [style.height.px]="cardHeight">
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/fuel-station.png" alt="Fuel Icon" class="icon-left">
+          {{ 'CALCULATE_FUEL_COST' | translate }}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+   
+    <ion-card (click)="goToTimeCalculator()" [style.height.px]="cardHeight">
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/distance.png" alt="Fuel Icon" class="icon-left">
+          <div>{{ 'CALCULATE_DISTANCE_TIME' | translate }}</div>
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+    
+
+    <ion-card (click)="goToRangeCalculator()" [style.height.px]="cardHeight">
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/gauge_1.png" alt="Fuel Icon" class="icon-left">
+          {{ 'CALCULATE_RANGE' | translate }}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card (click)="goToFuelQuantityCalculator()" [style.height.px]="cardHeight"> 
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/tank.png" alt="Fuel Icon" class="icon-left">
+          {{ 'CALCULATE_FUEL_QUANTITY' | translate }}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card (click)="goToFuelQuantityPriceCalculator()" [style.height.px]="cardHeight"> 
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/fuel_price.png" alt="Fuel Icon" class="icon-left">
+          {{ 'CALCULATE_FUEL_QUANTITY_Price' | translate }}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card (click)="goToHistory()" [style.height.px]="cardHeight">
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/time-management.png" alt="Fuel Icon" class="icon-left">
+          {{ 'HISTORY' | translate }}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card (click)="goToTractorFuelCalculator()" *ngIf="selectedFuel === 'DIESEL'" [style.height.px]="cardHeight">
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/tractor.png" alt="Fuel Icon" class="icon-left">
+          {{ 'TRACTOR_FUEL_CALCULATOR' | translate }}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <!-- <ion-item routerLink="/tabs/home" routerDirection="root"  [disabled]="true">
+      <img src="../../../assets/image/pmp.png" alt="">
+    </ion-item> -->
+
+  </div>
+</ion-content>
