@@ -1,20 +1,32 @@
 apply plugin: 'com.android.application'
 
 android {
+    //  lint {
+    //     checkReleaseBuilds false
+    // }
+    // signingConfigs {
+    //   release {
+    //   keyAlias 'key0'
+    //     storeFile file('/Users/appunik/Downloads/android_key/key.jks')
+    //     storePassword 'password'
+    //     keyPassword 'password'
+    //   }
+    // }
     namespace "com.msproducts.fuelApp"
-    compileSdk rootProject.ext.compileSdkVersion
+    compileSdk 35
     defaultConfig {
         applicationId "com.msproducts.fuelApp"
         minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 10
-        versionName "10.0"
+        targetSdkVersion 35
+        versionCode 13
+        versionName "13.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
              // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
+            //   signingConfig signingConfigs.release
     }
     buildTypes {
         release {
@@ -51,4 +63,24 @@ try {
     }
 } catch(Exception e) {
     logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}
+ 
+
+task findCoreUsage {
+    doLast {
+        configurations.forEach { configuration ->
+            try {
+                configuration.resolvedConfiguration.lenientConfiguration.allModuleDependencies.each { dep ->
+                    if (dep.toString().contains('androidx.core')) {
+                        println "Configuration ${configuration.name}: ${dep.module.toString()}"
+                        dep.children.each { child ->
+                            println "  └── ${child.module.toString()}"
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                // Skip unresolvable configurations
+            }
+        }
+    }
 }

@@ -17,6 +17,7 @@ import {
 } from '@capacitor-community/admob';
 import { SafeArea } from 'capacitor-plugin-safe-area';
 import { LoadingService } from './loading.service';
+import { Device } from '@capacitor/device';
 
 @Injectable()
 export class AdsService {
@@ -50,21 +51,91 @@ export class AdsService {
     if (this.isBannerShown) {
       return;
     }
-
+  
     try {
-      const options: BannerAdOptions = {
-        adId: this.ANDROID_ADMOB_BANNER_ID,
-        adSize: BannerAdSize.FULL_BANNER,
-        position: BannerAdPosition.BOTTOM_CENTER,
-        // isTesting: true,
-      };
-     await AdMob.showBanner(options);
+      const info = await Device.getInfo();
+      const androidVersion = parseInt(info.osVersion || '0', 10);
+  
+      if (info.platform === 'android' && androidVersion >= 13) {
+        // ✅ Android 13+ → respect SafeArea
+        const safeAreaData = await SafeArea.getSafeAreaInsets();
+        const { insets } = safeAreaData;
+  
+        const options: BannerAdOptions = {
+          adId: this.ANDROID_ADMOB_BANNER_ID,
+          adSize: BannerAdSize.FULL_BANNER,
+          position: BannerAdPosition.BOTTOM_CENTER,
+          margin: insets.bottom,
+          // isTesting: true,
+        };
+  
+        await AdMob.showBanner(options);
+        console.log(`Banner shown with safe area margin: ${insets.bottom}px`);
+      } else {
+        // ✅ Older Android → normal banner
+        const options: BannerAdOptions = {
+          adId: this.ANDROID_ADMOB_BANNER_ID,
+          adSize: BannerAdSize.FULL_BANNER,
+          position: BannerAdPosition.BOTTOM_CENTER,
+          // isTesting: true,
+        };
+  
+        await AdMob.showBanner(options);
+        console.log('Banner shown without safe area margin');
+      }
   
       this.isBannerShown = true;
     } catch (error) {
       console.error('Failed to show banner ad:', error);
     }
   }
+  
+
+  // async showAdMobBanner() {
+  //   if (this.isBannerShown) {
+  //     return;
+  //   }
+
+  //   try {
+  //     const options: BannerAdOptions = {
+  //       adId: this.ANDROID_ADMOB_BANNER_ID,
+  //       adSize: BannerAdSize.FULL_BANNER,
+  //       position: BannerAdPosition.BOTTOM_CENTER,
+  //       // isTesting: true,
+  //     };
+  //    await AdMob.showBanner(options);
+  
+  //     this.isBannerShown = true;
+  //   } catch (error) {
+  //     console.error('Failed to show banner ad:', error);
+  //   }
+  // }
+  // async showAdMobBanner() {
+  //   if (this.isBannerShown) {
+  //     return;
+  //   }
+  
+  //   try {
+  //     // Get safe area insets first
+  //     const safeAreaData = await SafeArea.getSafeAreaInsets();
+  //     const { insets } = safeAreaData;
+      
+  //     const options: BannerAdOptions = {
+  //       adId: this.ANDROID_ADMOB_BANNER_ID,
+  //       adSize: BannerAdSize.FULL_BANNER, // Use BANNER instead of FULL_BANNER for better fit
+  //       position: BannerAdPosition.BOTTOM_CENTER,
+  //       margin: insets.bottom, // Add margin for safe area
+  //       // isTesting: true,
+  //     };
+      
+  //     await AdMob.showBanner(options);
+  //     this.isBannerShown = true;
+      
+  //     console.log('Banner ad shown successfully');
+  //   } catch (error) {
+  //     console.error('Failed to show banner ad:', error);
+  //   }
+  // }
 
  async hideAdMobBanner() {
     await AdMob.hideBanner();
@@ -147,9 +218,12 @@ export class AdsService {
         }, 3000);
       },
     );
+    const safeAreaData = await SafeArea.getSafeAreaInsets();
+    const { insets } = safeAreaData;
 
     const options: RewardAdOptions = {
       adId: this.ANDROID_ADMOB_INTERSTITAIL_ID,
+      margin: insets.bottom, // Add margin for safe area
       // isTesting: true,
     };
     await AdMob.prepareInterstitial(options);
