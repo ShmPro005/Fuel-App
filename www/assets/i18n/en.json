@@ -32,7 +32,7 @@
 
     "LANGUAGE_SELECTION": "Select Language",
     "VEHICLE_SELECTION": "Select Vehicle",
-    "TRACTOR_FUEL_COST_CALCULATION": "Tractor Fuel Calculator",
+    "TRACTOR_FUEL_COST_CALCULATION": "JCB & Tractor Fuel Calculator",
     "BIKE": "Bike",
     "CAR": "Car",
     "TRACTOR": "Tractor",
@@ -54,7 +54,7 @@
     "MINUTES": "Minutes",
     "SECONDS": "Seconds",
     "LITERS": "Liters",
-    "TRACTOR_FUEL_CALCULATOR": "Tractor Fuel Calculator",
+    "TRACTOR_FUEL_CALCULATOR": "JCB & Tractor Fuel Calculator",
     "TOTAL_HOURS": "Total Hours",
     "CLEAR_ALL": "Clear All",
     "DELETE": "Delete",

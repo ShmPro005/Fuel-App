@@ -24,7 +24,7 @@ ion-card {
 }
 @media screen and (max-height: 920px) {
   ion-card ion-card-title {
-    font-size: 18px ;  
+    font-size: 16px ;  
   }
   .center-content img.icon-left {
     height: 45px;  
@@ -35,7 +35,7 @@ ion-card {
 }
 @media (max-height: 800px) {
   ion-card ion-card-title {
-    font-size: 15px ; /* Ensure it overrides other styles */
+    font-size: 13px ; /* Ensure it overrides other styles */
   }
   .center-content img.icon-left {
     height: 35px;  
@@ -47,7 +47,7 @@ ion-card {
 
 @media (max-height: 600px) {
   ion-card ion-card-title {
-    font-size: 15px ; /* Ensure it overrides other styles */
+    font-size: 13px ; /* Ensure it overrides other styles */
   }
   .center-content img.icon-left {
     height: 35px;  
@@ -59,7 +59,7 @@ ion-card {
 
 @media (max-height: 400px) {
   ion-card ion-card-title {
-    font-size: 14px ; /* Ensure it overrides other styles */
+    font-size: 12px ; /* Ensure it overrides other styles */
   }
   .center-content img.icon-left {
     height: 35px;  

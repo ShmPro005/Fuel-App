@@ -173,7 +173,7 @@ export class AdsService {
   async showAdMobRewardedAd() {
     this.loadingService.startLoader();
     AdMob.addListener(RewardAdPluginEvents.Loaded, (info: AdLoadInfo) => {
-      // this.loadingService.stopLoader();
+      this.loadingService.stopLoader();
     });
 
     AdMob.addListener(

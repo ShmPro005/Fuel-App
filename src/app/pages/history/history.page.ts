@@ -5,6 +5,7 @@ import { FuelCostStorageService } from 'src/app/shared/srv/fuel-cost-storage.ser
 import { UtilService } from 'src/app/shared/srv/util.service';
 import { Share } from '@capacitor/share';
 import { TranslateService } from '@ngx-translate/core';
+import { AdsService } from 'src/app/shared/srv/ads.service';
 
 @Component({
   selector: 'app-history',
@@ -20,7 +21,8 @@ export class HistoryPage implements OnInit {
     private toastController: ToastController,
     public utilService: UtilService,
     public navCtrl: NavController,
-    public translateService: TranslateService
+    public translateService: TranslateService,
+    public adsService: AdsService
   ) {
 
   }
@@ -78,6 +80,7 @@ export class HistoryPage implements OnInit {
          await this.loadRecords();
           this.utilService.showToast('Data deleted successfully!', 2000, 'warning');
           this.utilService.dismissLoading();
+          this.adsService.showAdMobInterstitialAd();
         } catch (error) {
           // console.log('Error deleting item:', error);
           this.utilService.dismissLoading();

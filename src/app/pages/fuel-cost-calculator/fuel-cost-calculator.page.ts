@@ -31,21 +31,22 @@ export class FuelCostCalculatorPage {
   ) {}
 
   calculateFuelCost() {
-    this.loadingService.startLoader();
+    this.adsService.showAdMobInterstitialAd();
     if (this.distance && this.average && this.fuelPrice) {
         setTimeout(() => {
           const litersNeeded = this.distance / this.average;
           this.result = parseFloat((litersNeeded * this.fuelPrice).toFixed(2));
           this.loadingService.stopLoader();
-        }, 1500);
+        }, 3000);
     } else {
       this.presentToast('Please fill in all fields.');
+      this.loadingService.stopLoader();
     }
     this.cd.detectChanges();
   }
 
   async saveRecord() {
-    this.adsService.showAdMobInterstitialAd();
+    // this.adsService.showAdMobInterstitialAd();
     this.fuelType = localStorage.getItem("selectedFuel") || "PETROL";
     if (this.result !== null) {
       const record: FuelCostRecord = {

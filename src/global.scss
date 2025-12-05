@@ -97,15 +97,26 @@ html, body, ion-app, ion-content {
   --background: linear-gradient(90deg, rgb(81 77 147) 0%, rgb(2 163 97) 0%, rgba(15, 138, 148, 1) 100%, rgba(109, 121, 9, 0.1517857142857143) 100%) !important;
 }
 .card-content-md {
-  font-size: 16px;
+  font-size: 14px;
 }
-ion-card-header+.card-content-md {
-  padding-top: 5px;
+@media screen and (max-height: 920px) {
+    
+    
 }
+@media (max-height: 800px) {
+  .card-content-md {
+    font-size: 13px;
+    line-height: 19px;
+  }
+}
+// ion-card-header+.card-content-md {
+//   padding-top: 5px;
+// }
 ion-item-divider {
-  margin: 5px 0px;
+  // margin: 5px 0px;
   font-weight: 600;
-  font-size: 18px;
+  // font-size: 18px;
+  border-radius: 5px;
 }
 ion-card {
   --background: linear-gradient(90deg, rgb(81 77 147) 0%, rgb(2 163 97) 0%, rgba(15, 138, 148, 1) 100%, rgba(109, 121, 9, 0.1517857142857143) 100%) !important;
