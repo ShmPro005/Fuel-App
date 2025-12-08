@@ -1,0 +1,98 @@
+/* Center the card on the page */
+// ion-card {
+//   width: 100%;
+//   max-width: 300px;
+//   // margin: 8px 0;
+//   display: flex;
+//   justify-content: flex-start;
+//   text-align: start;
+// }
+ion-card {
+  width: 100%;
+  // max-width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  text-align: start;
+  transition: height 0.3s ease-in-out; // Smooth transition effect
+
+  /* Default height */
+  height: 120px;
+
+  /* Adjust height based on screen sizes */
+
+}
+@media screen and (max-height: 920px) {
+  ion-card ion-card-title {
+    font-size: 16px ;
+  }
+  .center-content img.icon-left {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+  }
+
+}
+@media (max-height: 800px) {
+  ion-card ion-card-title {
+    font-size: 13px ; /* Ensure it overrides other styles */
+  }
+  .center-content img.icon-left {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+  }
+
+}
+
+@media (max-height: 600px) {
+  ion-card ion-card-title {
+    font-size: 13px ; /* Ensure it overrides other styles */
+  }
+  .center-content img.icon-left {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+  }
+
+}
+
+@media (max-height: 400px) {
+  ion-card ion-card-title {
+    font-size: 12px ; /* Ensure it overrides other styles */
+  }
+  .center-content img.icon-left {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+  }
+
+}
+/* Center the header content */
+ion-card-header {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: flex-start;     /* Vertically center the content */
+  padding-left: 30px;
+}
+// ion-card ion-card-title {
+//   color: #ffffff;
+//   font-size: 15px;
+// }
+/* Arrange image (left) and text (right) */
+.center-content {
+  display: flex;
+  flex-direction: row;     /* Image on left, text on right */
+  align-items: center;     /* Vertically center image and text */
+  justify-content: center; /* Horizontally center the row within the card */
+  gap: 10px;               /* Space between image and text */
+}
+
+/* Style the image on the left */
+
+/* Style the text on the right */
+.center-content span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Adjust color as needed */
+  text-align: left; /* Optional: Align text to the left within its space */
+}

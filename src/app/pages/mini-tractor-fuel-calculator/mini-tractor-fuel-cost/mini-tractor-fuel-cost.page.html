@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'MINI_TRACTOR_FUEL_COST' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container3">
+    <div class="common-title">
+      <ion-title style="font-size: 23px">{{ 'MINI_TRACTOR_FUEL_COST_CALCULATION' | translate }}</ion-title>
+    </div>
+
+    <div class="custom-gap"></div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'AVERAGE' | translate }} ({{ 'AVG_PER_HOURS' | translate }})</label>
+      <input type="number" class="input-group__input" [(ngModel)]="fuelAvgPerHour" />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'FUEL_PRICE' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="fuelPrice" />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'TOTAL_HOURS' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="totalHours" />
+    </div>
+
+    <ion-button class="custome-button" (click)="calculateMiniTractorFuelCost()">
+      {{ 'CALCULATE' | translate }}
+    </ion-button>
+
+     <!-- Styled Result Card -->
+    <ion-card *ngIf="totalCost !== null" class="custom-gap">
+      <ion-card-header>
+        <ion-card-title>{{ 'RESULT' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ 'AVERAGE' | translate }} ({{ 'AVG_PER_HOURS' | translate }}): {{ fuelAvgPerHour | number:'1.2-2' }}
+        <br>
+        {{ 'FUEL_PRICE' | translate }}: {{ fuelPrice | number:'1.2-2' }}
+        <br>
+        {{ 'TOTAL_HOURS' | translate }}: {{ totalHours | number:'1.2-2' }}
+        <br>
+        <ion-item-divider color="warning">
+          {{ 'TOTAL_COST' | translate }}: {{ totalCost | number:'1.2-2' }}
+        </ion-item-divider>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

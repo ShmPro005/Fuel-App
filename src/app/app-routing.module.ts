@@ -33,6 +33,7 @@ const routes: Routes = [
     redirectTo: 'language-selection',
     pathMatch: 'full'
   }
+
 ];
 
 @NgModule({

@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'MINI_TRACTOR_WORKED_HOURS' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container3">
+    <div class="common-title">
+      <ion-title style="font-size: 20px">{{ 'MINI_TRACTOR_WORKED_HOURS_CALCULATION' | translate }}</ion-title>
+    </div>
+
+    <div class="custom-gap"></div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'START_TIME' | translate }}</label>
+      <input type="time" class="input-group__input" [(ngModel)]="startTime" />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'END_TIME' | translate }}</label>
+      <input type="time" class="input-group__input" [(ngModel)]="endTime" />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'BREAK_TIME_MINUTES' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="breakTime" placeholder="0" />
+    </div>
+
+    <ion-button class="custome-button" (click)="calculateWorkedHours()">
+      {{ 'CALCULATE' | translate }}
+    </ion-button>
+
+     <!-- Styled Result Card -->
+    <ion-card *ngIf="totalWorkedHours !== null" class="custom-gap">
+      <ion-card-header>
+        <ion-card-title>{{ 'RESULT' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ 'START_TIME' | translate }}: {{ startTime }}
+        <br>
+        {{ 'END_TIME' | translate }}: {{ endTime }}
+        <br>
+        {{ 'BREAK_TIME_MINUTES' | translate }}: {{ breakTime || 0 }}
+        <br>
+        <ion-item-divider color="warning">
+          {{ 'TOTAL_WORKED_HOURS' | translate }}: {{ totalWorkedHours }}
+        </ion-item-divider>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

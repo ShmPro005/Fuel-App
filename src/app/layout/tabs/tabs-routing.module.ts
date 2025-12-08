@@ -58,6 +58,20 @@ const routes: Routes = [
           .then(m => m.TractorFuelCalculatorPageModule)
       },
       {
+        path: 'mini-tractor-fuel-calculator',
+        loadChildren: () => import('../../pages/mini-tractor-fuel-calculator/mini-tractor-fuel-calculator.module')
+          .then(m => m.MiniTractorFuelCalculatorPageModule)
+      },
+      {
+        path: 'jcb-fuel-calculator',
+        loadChildren: () => import('../../pages/jcb-fuel-calculator/jcb-fuel-calculator.module')
+          .then(m => m.JcbFuelCalculatorPageModule)
+      },
+      {
+        path: 'more',
+        loadChildren: () => import('../../pages/more/more.module').then(m => m.MorePageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'

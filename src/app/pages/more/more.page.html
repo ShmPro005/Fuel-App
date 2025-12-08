@@ -1,0 +1,42 @@
+<ion-content [fullscreen]="true" class="container">
+  <div class="card-grid container">
+
+    <ion-card (click)="goToTimeCalculator()" [style.height.px]="cardHeight">
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/distance.png" alt="Fuel Icon" class="icon-left">
+          <div>{{ 'CALCULATE_DISTANCE_TIME' | translate }}</div>
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+    
+
+    <ion-card (click)="goToRangeCalculator()" [style.height.px]="cardHeight">
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/gauge_1.png" alt="Fuel Icon" class="icon-left">
+          {{ 'CALCULATE_RANGE' | translate }}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+    
+    <ion-card (click)="goToFuelQuantityCalculator()" [style.height.px]="cardHeight"> 
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/tank.png" alt="Fuel Icon" class="icon-left">
+          {{ 'CALCULATE_FUEL_QUANTITY' | translate }}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card (click)="goToFuelQuantityPriceCalculator()" [style.height.px]="cardHeight"> 
+      <ion-card-header>
+        <ion-card-title class="center-content">
+          <img src="../../../assets/icon/fuel icon/fuel_price.png" alt="Fuel Icon" class="icon-left">
+          {{ 'CALCULATE_FUEL_QUANTITY_Price' | translate }}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+  </div>
+</ion-content>

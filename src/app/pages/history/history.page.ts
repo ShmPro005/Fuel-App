@@ -80,7 +80,7 @@ export class HistoryPage implements OnInit {
          await this.loadRecords();
           this.utilService.showToast('Data deleted successfully!', 2000, 'warning');
           this.utilService.dismissLoading();
-          this.adsService.showAdMobInterstitialAd();
+          // this.adsService.showAdMobInterstitialAd();
         } catch (error) {
           // console.log('Error deleting item:', error);
           this.utilService.dismissLoading();

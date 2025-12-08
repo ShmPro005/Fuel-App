@@ -1,46 +1,30 @@
 <ion-content>
   <div class="container3">
     <div class="common-title">
-      <ion-title style="font-size: 23px">{{ 'TRACTOR_FUEL_COST_CALCULATION' | translate }}</ion-title>
+      <ion-title >{{ 'TRACTOR_FUEL_COST_CALCULATION' | translate }}</ion-title>
     </div>
 
     <div class="custom-gap"></div>
-
-    <div class="input-group">
-      <label class="input-group__label">{{ 'AVERAGE' | translate }} ({{ 'AVG_PER_HOURS' | translate }})</label>
-      <input type="number" class="input-group__input" [(ngModel)]="fuelAvgPerHour" />
+   
+    <div class="top-fuel-icon_01">
+      <img src="../../../assets/icon/fuel icon/tractor.png" alt="Fuel Icon" class="icon-left">
     </div>
+    <div class="button-grid">
+      <ion-button class="custome-button" routerLink="tractor-fuel-cost">
+        {{ 'TRACTOR_FUEL_COST' | translate }}
+      </ion-button>
 
-    <div class="input-group">
-      <label class="input-group__label">{{ 'FUEL_PRICE' | translate }}</label>
-      <input type="number" class="input-group__input" [(ngModel)]="fuelPrice" />
+      <ion-button class="custome-button" routerLink="tractor-worked-hours">
+        {{ 'TRACTOR_WORKED_HOURS' | translate }}
+      </ion-button>
+
+      <ion-button class="custome-button" routerLink="tractor-hour-wise-money-cost">
+        {{ 'TRACTOR_HOUR_WISE_MONEY_COST' | translate }}
+      </ion-button>
+
+      <ion-button class="custome-button" routerLink="tractor-fera-cost">
+        {{ 'TRACTOR_FERA_COST' | translate }}
+      </ion-button>
     </div>
-
-    <div class="input-group">
-      <label class="input-group__label">{{ 'TOTAL_HOURS' | translate }}</label>
-      <input type="number" class="input-group__input" [(ngModel)]="totalHours" />
-    </div>
-
-    <ion-button class="custome-button" (click)="calculateTractorFuelCost()">
-      {{ 'CALCULATE' | translate }}
-    </ion-button>
-
-     <!-- Styled Result Card -->
-    <ion-card *ngIf="totalCost !== null" class="custom-gap">
-      <ion-card-header>
-        <ion-card-title>{{ 'RESULT' | translate }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        {{ 'AVERAGE' | translate }} ({{ 'AVG_PER_HOURS' | translate }}): {{ fuelAvgPerHour | number:'1.2-2' }}
-        <br>
-        {{ 'FUEL_PRICE' | translate }}: {{ fuelPrice | number:'1.2-2' }}
-        <br>
-        {{ 'TOTAL_HOURS' | translate }}: {{ totalHours | number:'1.2-2' }}
-        <br>
-        <ion-item-divider color="warning">
-          {{ 'TOTAL_COST' | translate }}: {{ totalCost | number:'1.2-2' }}
-        </ion-item-divider>
-      </ion-card-content>
-    </ion-card>
   </div>
 </ion-content>

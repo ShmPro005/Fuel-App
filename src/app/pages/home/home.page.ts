@@ -29,7 +29,7 @@ export class HomePage implements OnInit {
   }
 
   // Listen for window resize events
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   onResize() {
     this.setCardHeight();
   }
@@ -84,5 +84,17 @@ export class HomePage implements OnInit {
 
   goToTractorFuelCalculator() {
     this.navCtrl.navigateForward('/tabs/tractor-fuel-calculator');
+  }
+
+  goToMiniTractorFuelCalculator() {
+    this.navCtrl.navigateForward('/tabs/mini-tractor-fuel-calculator');
+  }
+
+  goToJcbFuelCalculator() {
+    this.navCtrl.navigateForward('/tabs/jcb-fuel-calculator');
+  }
+
+  goToMore() {
+    this.navCtrl.navigateForward('/tabs/more');
   }
 }

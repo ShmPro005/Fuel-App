@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'JCB_FERA_COST' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container3">
+    <div class="common-title">
+      <ion-title style="font-size: 23px">{{ 'JCB_FERA_COST_CALCULATION' | translate }}</ion-title>
+    </div>
+
+    <div class="custom-gap"></div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'DISTANCE_KM' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="distanceKm" />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'COST_PER_KM' | translate }}</label>
+      <input type="number" class="input-group__input" [(ngModel)]="costPerKm" />
+    </div>
+
+    <ion-button class="custome-button" (click)="calculateFeraCost()">
+      {{ 'CALCULATE' | translate }}
+    </ion-button>
+
+     <!-- Styled Result Card -->
+    <ion-card *ngIf="totalCost !== null" class="custom-gap">
+      <ion-card-header>
+        <ion-card-title>{{ 'RESULT' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ 'DISTANCE_KM' | translate }}: {{ distanceKm | number:'1.2-2' }}
+        <br>
+        {{ 'COST_PER_KM' | translate }}: {{ costPerKm | number:'1.2-2' }}
+        <br>
+         
+        <ion-item-divider color="warning">
+          {{ 'TOTAL_COST' | translate }}: {{ totalCost | number:'1.2-2' }}
+        </ion-item-divider>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

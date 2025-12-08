@@ -31,11 +31,13 @@
 
     "LANGUAGE_SELECTION": "भाषा चुनें",
     "VEHICLE_SELECTION": "वाहन चुनें",
-    "TRACTOR_FUEL_COST_CALCULATION": "JCB & ट्रैक्टर ईंधन लागत गणना",
+    "JCB_FUEL_COST_CALCULATION": "JCB ईंधन लागत गणना",
+    "TRACTOR_FUEL_COST_CALCULATION": "ट्रैक्टर ईंधन लागत गणना",
+    "MINI_TRACTOR_FUEL_COST_CALCULATION": "मिनी ट्रैक्टर ईंधन लागत गणना",
     "BIKE": "साइकिल",
     "CAR": "कार",
     "TRACTOR": "ट्रैक्टर",
-    "CALCULATE_FUEL_COST": "ईंधन लागत गणना करें",
+    "CALCULATE_FUEL_COST": "Car ईंधन गणना करें",
     "CALCULATE_DISTANCE_TIME": "दूरी और समय गणना करें",
     "CALCULATE_RANGE": "कुल दूरी",
     "CALCULATE_FUEL_QUANTITY": "ईंधन मात्रा गणना करें",
@@ -53,7 +55,9 @@
     "MINUTES": "मिनट",
     "SECONDS": "सेकंड",
     "LITERS": "लीटर",
-    "TRACTOR_FUEL_CALCULATOR": "JCB & ट्रैक्टर ईंधन गणक",
+    "JCB_FUEL_CALCULATOR": "JCB ईंधन गणक",
+    "TRACTOR_FUEL_CALCULATOR": "ट्रैक्टर ईंधन गणक",
+    "MORE": "अधिक",
     "TOTAL_HOURS": "कुल घंटे",
     "CLEAR_ALL": "सभी साफ करें",
     "DELETE": "हटाएं",
@@ -74,6 +78,62 @@
     "FUEL_AMOUNT": "कितने का ईंधन डाला",
     "TOTAL_FUEL_PRICE": "कुल ईंधन की कीमत",
     "SPEED": "स्पीड",
-    "AVG_PER_HOURS": "per/hour"
+    "AVG_PER_HOURS": "per/hour",
+
+    "TRACTOR_FUEL_COST": "ट्रैक्टर ईंधन लागत",
+    "TRACTOR_WORKED_HOURS": "ट्रैक्टर काम किए घंटे",
+    "TRACTOR_HOUR_WISE_MONEY_COST": "ट्रैक्टर घंटे अनुसार धन लागत",
+    "TRACTOR_FERA_COST": "ट्रैक्टर फेरा लागत",
+
+    "TRACTOR_WORKED_HOURS_CALCULATION": "ट्रैक्टर काम किए घंटे की गणना",
+    "TRACTOR_HOUR_WISE_MONEY_COST_CALCULATION": "ट्रैक्टर घंटे अनुसार धन लागत गणना",
+    "TRACTOR_FERA_COST_CALCULATION": "ट्रैक्टर फेरा लागत गणना",
+
+    "HOURLY_RATE_CALCULATION": "प्रति घंटा दर गणना",
+    "BONUS_AMOUNT_CALCULATION": "बोनस राशि गणना",
+
+    "DISTANCE_KM_CALCULATION": "दूरी (किमी) गणना",
+    "COST_PER_KM_CALCULATION": "प्रति किमी लागत गणना",
+    "ADDITIONAL_CHARGES_CALCULATION": "अतिरिक्त शुल्क गणना",
+
+    "TOTAL_COST_CALCULATION": "कुल लागत गणना",
+    "FUEL_AMOUNT_CALCULATION": "कितने का ईंधन डाला गणना",
+    "TOTAL_FUEL_PRICE_CALCULATION": "कुल ईंधन की कीमत गणना",
+
+    "1_FERA_COST": "1 फेरा लागत",
+    "PER_FERA_COST": "प्रति फेरा लागत",
+    "TOTAL_FERA": "कुल फेरा",
+
+
+    "START_TIME": "प्रारंभ समय",
+    "END_TIME": "अंत समय",
+    "BREAK_TIME_MINUTES": "ब्रेक समय (मिनट)",
+    "TOTAL_WORKED_HOURS": "कुल काम किए घंटे",
+
+    "HOURLY_RATE": "प्रति घंटा दर",
+    "BONUS_AMOUNT": "बोनस राशि",
+
+    "DISTANCE_KM": "दूरी (किमी)",
+    "COST_PER_KM": "प्रति किमी लागत",
+    "ADDITIONAL_CHARGES": "अतिरिक्त शुल्क",
+
+    "MINI_TRACTOR_FUEL_COST": "मिनी ट्रैक्टर ईंधन लागत",
+    "MINI_TRACTOR_WORKED_HOURS": "मिनी ट्रैक्टर काम किए घंटे",
+    "MINI_TRACTOR_HOUR_WISE_MONEY_COST": "मिनी ट्रैक्टर घंटे अनुसार धन लागत",
+    "MINI_TRACTOR_FERA_COST": "मिनी ट्रैक्टर फेरा लागत",
+
+    "MINI_TRACTOR_WORKED_HOURS_CALCULATION": "मिनी ट्रैक्टर काम किए घंटे की गणना",
+    "MINI_TRACTOR_HOUR_WISE_MONEY_COST_CALCULATION": "मिनी ट्रैक्टर घंटे अनुसार धन लागत गणना",
+    "MINI_TRACTOR_FERA_COST_CALCULATION": "मिनी ट्रैक्टर फेरा लागत गणना",
+
+    "JCB_FUEL_COST": "JCB ईंधन लागत",
+    "JCB_WORKED_HOURS": "JCB काम किए घंटे",
+    "JCB_HOUR_WISE_MONEY_COST": "JCB घंटे अनुसार धन लागत",
+    "JCB_FERA_COST": "JCB फेरा लागत",
+
+    "JCB_WORKED_HOURS_CALCULATION": "JCB काम किए घंटे की गणना",
+    "JCB_HOUR_WISE_MONEY_COST_CALCULATION": "JCB घंटे अनुसार धन लागत गणना",
+    "JCB_FERA_COST_CALCULATION": "JCB फेरा लागत गणना",
+
+    "EXAMPLE": "उदाहरण: 3 घंटे 25 मिनट = 3.25"
   }
-  
