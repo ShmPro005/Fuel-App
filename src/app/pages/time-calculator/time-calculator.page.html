@@ -26,11 +26,16 @@
       </ion-card-header>
 
       <ion-card-content >
-        {{ 'HOURS' | translate }}: <span class="child-text">{{ hours }}</span>, 
-        {{ 'MINUTES' | translate }}: <span class="child-text">{{ minutes }}</span>, 
+        {{ 'HOURS' | translate }}: <span class="child-text">{{ hours }}</span>,
+        {{ 'MINUTES' | translate }}: <span class="child-text">{{ minutes }}</span>,
         {{ 'SECONDS' | translate }}: <span class="child-text">{{ seconds }}</span>
       </ion-card-content>
     </ion-card>
+
+    <ion-button *ngIf="hours" class="custome-button custom-gap" (click)="saveRecord()">
+      {{ 'SAVE' | translate }}
+    </ion-button>
+
     </div>
-    
+
 </ion-content>

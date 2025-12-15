@@ -75,8 +75,10 @@
     "PLEASE_FILL_ALL_FIELDS": "कृपया सभी फ़ील्ड भरें।",
     "RESULT": "परिणाम",
     "TOTAL_COST": "कुल लागत",
+    "TOTAL_EXPENSE_COST": "कुल व्यय लागत",
     "FUEL_AMOUNT": "कितने का ईंधन डाला",
     "TOTAL_FUEL_PRICE": "कुल ईंधन की कीमत",
+    "TOTAL_QUANTITY_FUEL_PRICE": "कुल ईंधन कीमत",
     "SPEED": "स्पीड",
     "AVG_PER_HOURS": "per/hour",
 

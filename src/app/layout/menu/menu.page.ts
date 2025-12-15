@@ -13,7 +13,7 @@ import { UtilService } from 'src/app/shared/srv/util.service';
 })
 export class MenuPage implements OnInit {
   isMenuOpen = false;
-  appUrl: string = 'https://example.com';
+  appUrl: string = '';
   userData: any = {}; // Store user data from local storage
 
   constructor(

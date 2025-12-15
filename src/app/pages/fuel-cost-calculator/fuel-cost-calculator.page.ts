@@ -31,7 +31,7 @@ export class FuelCostCalculatorPage {
   ) {}
 
   calculateFuelCost() {
-    this.adsService.showAdMobInterstitialAd();
+    // this.adsService.showAdMobInterstitialAd();
     if (this.distance && this.average && this.fuelPrice) {
         setTimeout(() => {
           const litersNeeded = this.distance / this.average;
@@ -46,7 +46,7 @@ export class FuelCostCalculatorPage {
   }
 
   async saveRecord() {
-    // this.adsService.showAdMobInterstitialAd();
+    this.adsService.showAdMobInterstitialAd();
     this.fuelType = localStorage.getItem("selectedFuel") || "PETROL";
     if (this.result !== null) {
       const record: FuelCostRecord = {
@@ -55,6 +55,8 @@ export class FuelCostCalculatorPage {
         fuelPrice: this.fuelPrice,
         totalCost: this.result,
         fuelType: this.fuelType,
+        calculationType: 'FUEL_COST',
+        title: 'CALCULATE_FUEL_COST',
         date: new Date().toISOString(),
       };
 

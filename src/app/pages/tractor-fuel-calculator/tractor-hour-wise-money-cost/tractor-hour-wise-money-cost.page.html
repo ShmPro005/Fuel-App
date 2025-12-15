@@ -22,7 +22,7 @@
 
     <div class="input-group">
       <label class="input-group__label">{{ 'TOTAL_HOURS' | translate }}</label>
-      <input type="number" class="input-group__input" [(ngModel)]="totalHours" />
+      <input type="text" class="input-group__input" [(ngModel)]="totalHours" (input)="validateTotalHours()" />
       <span class="exmaple">( {{ 'EXAMPLE' | translate }} )</span>
     </div>
 
@@ -38,13 +38,17 @@
       <ion-card-content>
         {{ 'HOURLY_RATE' | translate }}: {{ hourlyRate | number:'1.2-2' }}
         <br>
-        {{ 'TOTAL_HOURS' | translate }}: {{ totalHours | number:'1.2-2' }}
+        {{ 'TOTAL_HOURS' | translate }}: {{ totalHours }}
         <br>
-     
+
         <ion-item-divider color="warning">
-          {{ 'TOTAL_COST' | translate }}: {{ totalCost | number:'1.2-2' }}
+          {{ 'TOTAL_EXPENSE_COST' | translate }}: {{ totalCost | number:'1.2-2' }}
         </ion-item-divider>
       </ion-card-content>
     </ion-card>
+
+    <ion-button *ngIf="totalCost !== null" class="custome-button custom-gap" (click)="saveRecord()">
+      {{ 'SAVE' | translate }}
+    </ion-button>
   </div>
 </ion-content>

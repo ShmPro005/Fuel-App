@@ -78,6 +78,7 @@
     "TOTAL_COST": "Total Cost",
     "FUEL_AMOUNT": "Total Fuel Amount",
     "TOTAL_FUEL_PRICE": "Total fuel price",
+    "TOTAL_QUANTITY_FUEL_PRICE": "Quantity Fuel Price",
     "SPEED": "Speed",
     "AVG_PER_HOURS": "per/hour",
 

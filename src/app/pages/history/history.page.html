@@ -6,22 +6,94 @@
           <!-- Add fuelType at the top with background color -->
           <ion-card-content>
             <div class="list-container">
-              <div class="fuel-type-header" [ngClass]="{'petrol': record.fuelType === 'PETROL', 'cng': record.fuelType === 'CNG', 'diesel': record.fuelType === 'DIESEL'}">
+              <!-- <div class="fuel-type-header">
                 <img height="18px" src="../../../assets/icon/fuel icon/fuel.png" alt="">&nbsp;  <ion-label>   <span class="fuel-type">{{ record.fuelType }}</span>    ⛽</ion-label>
-              </div>
+              </div> -->
+              <div class="badge-row">
+               
+                <span class="status-badge--neon">
+                    <span class="status-dot"></span>
+                    {{ (record.title || record.fuelType) | translate }}
+                </span>
+            </div>
               <ion-label>
-                <h2>{{ 'FUEL_COST' | translate }}: {{ record.totalCost | number:'1.2-2' }}</h2>
-                <p>{{ 'DISTANCE' | translate }}: {{ record.distance }} {{ 'KM' | translate }}</p>
-                <p>{{ 'AVERAGE' | translate }}: {{ record.average }} {{ 'KM_PER_LITER' | translate }}</p>
-                <p>{{ 'FUEL_PRICE' | translate }}: {{ record.fuelPrice | number:'1.2-2' }} {{ 'PER_LITER' | translate }}</p>
+                
+                <!-- FUEL_COST fields -->
+                <div *ngIf="record.calculationType === 'FUEL_COST'">
+                  <p *ngIf="record.totalHours">{{ 'TOTAL_HOURS' | translate }}: {{ record.totalHours }}</p>
+                  <p *ngIf="record.distance">{{ 'DISTANCE' | translate }}: {{ record.distance }} {{ 'KM' | translate }}</p>
+                  <p *ngIf="record.fuelAvgPerHour">{{ 'AVERAGE' | translate }}: {{ record.fuelAvgPerHour }} {{ 'AVG_PER_HOURS' | translate }}</p>
+                  <p *ngIf="record.average && !record.fuelAvgPerHour">{{ 'AVERAGE' | translate }}: {{ record.average }} {{ 'KM_PER_LITER' | translate }}</p>
+                  <p>{{ 'FUEL_PRICE' | translate }}: {{ record.fuelPrice | number:'1.2-2' }} {{ 'PER_LITER' | translate }}</p>
+                </div>
+
+                <!-- WORKED_HOURS fields -->
+                <div *ngIf="record.calculationType === 'WORKED_HOURS'">
+                  <p>{{ 'START_TIME' | translate }}: {{ record.startTime }}</p>
+                  <p>{{ 'END_TIME' | translate }}: {{ record.endTime }}</p>
+                  <p>{{ 'BREAK_TIME_MINUTES' | translate }}: {{ record.breakTime || 0 }}</p>
+                </div>
+
+                <!-- HOUR_WISE_COST fields -->
+                <div *ngIf="record.calculationType === 'HOUR_WISE_COST'">
+                  <p>{{ 'HOURLY_RATE' | translate }}: {{ record.hourlyRate | number:'1.2-2' }}</p>
+                  <p>{{ 'TOTAL_HOURS' | translate }}: {{ record.totalHours }}</p>
+                </div>
+
+                <!-- FERA_COST fields -->
+                <div *ngIf="record.calculationType === 'FERA_COST'">
+                  <p>{{ '1_FERA_COST' | translate }}: {{ record.distanceKm | number:'1.2-2' }}</p>
+                  <p>{{ 'PER_FERA_COST' | translate }}: {{ record.costPerKm | number:'1.2-2' }}</p>
+                </div>
+
+                <!-- FUEL_QUANTITY fields -->
+                <div *ngIf="record.calculationType === 'FUEL_QUANTITY'">
+                  <p>{{ 'FUEL_AMOUNT' | translate }}: {{ record.totalCost | number:'1.2-2' }}</p>
+                  <p>{{ 'FUEL_PRICE' | translate }}: {{ record.fuelPrice | number:'1.2-2' }}</p>
+                </div>
+
+                <!-- FUEL_QUANTITY_PRICE fields -->
+                <div *ngIf="record.calculationType === 'FUEL_QUANTITY_PRICE'">
+                  <p>{{ 'TOTAL_FUEL_QUANTITY' | translate }}: {{ record.fuelQuantity | number:'1.2-2' }} L</p>
+                  <p>{{ 'FUEL_PRICE' | translate }}: {{ record.fuelPrice | number:'1.2-2' }}</p>
+                </div>
+
+                <!-- RANGE_CALCULATOR fields -->
+                <div *ngIf="record.calculationType === 'RANGE_CALCULATOR'">
+                  <p>{{ 'FUEL_AMOUNT' | translate }}: {{ record.totalCost | number:'1.2-2' }}</p>
+                  <p>{{ 'FUEL_PRICE' | translate }}: {{ record.fuelPrice | number:'1.2-2' }}</p>
+                  <p>{{ 'AVERAGE' | translate }}: {{ record.average | number:'1.2-2' }}</p>
+                </div>
+
+                <!-- TIME_CALCULATOR fields -->
+                <div *ngIf="record.calculationType === 'TIME_CALCULATOR'">
+                  <p>{{ 'DISTANCE' | translate }}: {{ record.distance | number:'1.2-2' }} KM</p>
+                  <p>{{ 'SPEED' | translate }}: {{ record.average | number:'1.2-2' }} KM/h</p>
+                  <!-- <p>{{ 'CALCULATE_DISTANCE_TIME' | translate }}: {{ record.hours }}h {{ record.minutes }}m {{ record.seconds }}s</p> -->
+                </div>
+
                 <p>{{ 'DATE' | translate }}: {{ record.date | date:'short' }}</p>
+
+                <h2 *ngIf="record.calculationType === 'FUEL_COST'">{{ 'FUEL_COST' | translate }}: {{ record.totalCost | number:'1.2-2' }}</h2>
+                <h2 *ngIf="record.calculationType === 'WORKED_HOURS'">{{ 'TOTAL_WORKED_HOURS' | translate }}: {{ record.totalWorkedHours }}</h2>
+                <h2 *ngIf="record.calculationType === 'HOUR_WISE_COST'">{{ 'TOTAL_EXPENSE_COST' | translate }}: {{ record.totalCost | number:'1.2-2' }}</h2>
+                <h2 *ngIf="record.calculationType === 'FERA_COST'">{{ 'TOTAL_FERA_COST' | translate }}: {{ record.totalCost | number:'1.2-2' }}</h2>
+                <h2 *ngIf="record.calculationType === 'FUEL_QUANTITY'">{{ 'LITERS' | translate }}: {{ record.liters | number:'1.2-2' }}</h2>
+                <h2 *ngIf="record.calculationType === 'FUEL_QUANTITY_PRICE'">{{ 'TOTAL_QUANTITY_FUEL_PRICE' | translate }}: {{ record.totalCost | number:'1.2-2' }}</h2>
+                <h2 *ngIf="record.calculationType === 'RANGE_CALCULATOR'">{{ 'CALCULATE_RANGE' | translate }}: {{ record.totalRange | number:'1.0-0' }} KM</h2>
+                <h2 *ngIf="record.calculationType === 'TIME_CALCULATOR'">{{ 'CALCULATE_DISTANCE_TIME' | translate }}: {{ record.hours }}h {{ record.minutes }}m {{ record.seconds }}s</h2>
+
+
               </ion-label>
             </div>
+            
             <div class="button-container">
               <ion-button fill="clear" class="action-button custome-button" (click)="deleteRecord(record); $event.stopPropagation()">
                 <img src="../../../assets/icon/delete_4.png" alt="" height="20px">
                 Delete
               </ion-button>
+             <div class="button-divider"></div>
+
               <ion-button fill="clear" class="action-button custome-button" (click)="shareRecord(record); $event.stopPropagation()">
                 <img src="../../../assets/icon/share1.png" alt="" height="20px">
                 Share

@@ -228,6 +228,8 @@ export class AdsService {
     };
     await AdMob.prepareInterstitial(options);
     await AdMob.showInterstitial();
+    this.loadingService.stopLoader();
+
   }
 
   async getSafeArea() {

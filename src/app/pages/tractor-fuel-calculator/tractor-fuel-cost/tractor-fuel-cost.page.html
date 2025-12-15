@@ -51,5 +51,9 @@
         </ion-item-divider>
       </ion-card-content>
     </ion-card>
+
+    <ion-button *ngIf="totalCost !== null" class="custome-button custom-gap" (click)="saveRecord()">
+      {{ 'SAVE' | translate }}
+    </ion-button>
   </div>
 </ion-content>

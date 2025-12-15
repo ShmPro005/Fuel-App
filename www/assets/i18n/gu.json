@@ -76,6 +76,7 @@
     "TOTAL_COST": "કુલ ઇંધણ ખર્ચ",
     "FUEL_AMOUNT": "કેટલાનું ઇંધણ નાખ્યું",
     "TOTAL_FUEL_PRICE": "ટોટલ ઇંધણની કિંમત",
+    "TOTAL_QUANTITY_FUEL_PRICE": "કુલ ઇંધણ કિંમત",
     "SPEED": "ઝડપ",
     "AVG_PER_HOURS": "પર/કલાક",
 
@@ -90,7 +91,7 @@
 
     "1_FERA_COST": "1 એક ફેરાનો ભાવ",
     "PER_FERA_COST": "પ્રતિ ફેરા ખર્ચ",
-    "TOTAL_FERA": "કુલ ફેરા",
+    "TOTAL_FERA_COST": "કુલ ફેરા ખર્ચ",
 
     "START_TIME": "શરૂઆતનો સમય",
     "END_TIME": "અંતિમ સમય",

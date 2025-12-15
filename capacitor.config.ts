@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.msproducts.fuelApp',
-  appName: 'Fuel Calculator',
+  appName: 'Fuel Mitra',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {

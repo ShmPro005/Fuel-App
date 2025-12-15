@@ -43,6 +43,10 @@
       </ion-card-content>
     </ion-card>
 
+    <ion-button *ngIf="totalRange" class="custome-button custom-gap" (click)="saveRecord()">
+      {{ 'SAVE' | translate }}
+    </ion-button>
+
   </div>
- 
+
 </ion-content>

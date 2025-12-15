@@ -34,5 +34,9 @@
       </ion-card-content>
     </ion-card>
 
+    <ion-button *ngIf="liters !== null" class="custome-button custom-gap" (click)="saveRecord()">
+      {{ 'SAVE' | translate }}
+    </ion-button>
+
   </div>
 </ion-content>

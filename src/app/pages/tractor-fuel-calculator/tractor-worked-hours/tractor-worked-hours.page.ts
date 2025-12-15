@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AdsService } from 'src/app/shared/srv/ads.service';
 import { LoadingService } from 'src/app/shared/srv/loading.service';
+import { FuelCostStorageService } from 'src/app/shared/srv/fuel-cost-storage.service';
+import { UtilService } from 'src/app/shared/srv/util.service';
+import { FuelCostRecord } from 'src/app/models/fuel-cost-record.model';
 
 @Component({
   selector: 'app-tractor-worked-hours',
@@ -14,12 +18,16 @@ export class TractorWorkedHoursPage {
   endTime: string = '';
   breakTime: number = 0;
   totalWorkedHours: any | null = null;
+  totalWorkedHoursNumeric: number = 0;
 
   constructor(
     public adsService: AdsService,
     public loadingService: LoadingService,
     private router: Router,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private fuelCostStorage: FuelCostStorageService,
+    public utilService: UtilService,
+    private navCtrl: NavController
   ) { }
 
   goBack() {
@@ -49,6 +57,7 @@ export class TractorWorkedHoursPage {
         }
 
         totalHours = Math.max(0, totalHours);
+        this.totalWorkedHoursNumeric = totalHours;
 
         // Format as "X hours Y minutes" using translated strings
         const hours = Math.floor(totalHours);
@@ -69,5 +78,45 @@ export class TractorWorkedHoursPage {
         this.loadingService.stopLoader();
       }, 3000);
     }
+  }
+
+  async saveRecord() {
+    // this.adsService.showAdMobInterstitialAd();
+    if (this.totalWorkedHours !== null) {
+      const record: FuelCostRecord = {
+        totalCost: this.totalWorkedHoursNumeric,
+        fuelType: "TRACTOR",
+        date: new Date().toISOString(),
+        calculationType: 'WORKED_HOURS',
+        startTime: this.startTime,
+        endTime: this.endTime,
+        breakTime: this.breakTime,
+        totalWorkedHours: this.totalWorkedHours,
+        title: 'TRACTOR_WORKED_HOURS_CALCULATION',
+      };
+
+      try {
+        await this.fuelCostStorage.saveRecord(record);
+        this.utilService.showToast('Record saved successfully!', 2000, 'warning');
+
+        this.resetForm();
+        setTimeout(() => {
+           this.navCtrl.navigateForward('/tabs/history');
+           this.loadingService.stopLoader();
+        }, 3000);
+      } catch (error) {
+        this.utilService.showToast('Failed to save record.', 2000, 'warning');
+      }
+    } else {
+      this.utilService.showToast('No result to save.', 2000, 'warning');
+    }
+  }
+
+  resetForm() {
+    this.startTime = '';
+    this.endTime = '';
+    this.breakTime = 0;
+    this.totalWorkedHours = null;
+    this.totalWorkedHoursNumeric = 0;
   }
 }
