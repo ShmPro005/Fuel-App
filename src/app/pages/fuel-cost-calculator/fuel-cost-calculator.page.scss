@@ -17,12 +17,172 @@ ion-card-header {
 }
 ion-card {
     width: 100%;
+    margin: 10px 0;
+    border-radius: 8px;
   }
-// ion-card-content { 
-//     // text-align: center;
-//     padding-top: 20px;
-// }
-// .custom-gap {
-//     padding-bottom: 7px;
-// }
 
+ion-card-content {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+// Input group responsive styles
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group__label {
+    font-size: 14px;
+}
+
+.input-group__input {
+    font-size: 16px; /* Prevents zoom on iOS */
+}
+
+// Button styles
+.custome-button {
+    margin: 10px 0;
+    width: 100%;
+    --border-radius: 8px;
+}
+
+// Result card specific styles
+ion-card.custom-gap {
+    margin: 15px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+// Responsive Design for Small Screens
+@media (max-width: 480px) {
+    .container2 {
+        padding: 80px 15px 20px;
+    }
+
+    .common-title ion-title {
+        font-size: 24px;
+    }
+
+    .input-group {
+        margin-bottom: 12px;
+    }
+
+    .input-group__label {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    .input-group__input {
+        font-size: 16px;
+        padding: 12px;
+        height: 48px;
+    }
+
+    ion-card-content {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    ion-card ion-card-title {
+        font-size: 16px;
+    }
+
+    .custome-button {
+        margin: 8px 0;
+        font-size: 14px;
+        --padding-top: 12px;
+        --padding-bottom: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .container2 {
+        padding: 70px 10px 15px;
+    }
+
+    .common-title ion-title {
+        font-size: 20px;
+    }
+
+    .input-group__input {
+        padding: 10px;
+        height: 44px;
+    }
+
+    ion-card-content {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    ion-card ion-card-title {
+        font-size: 14px;
+    }
+}
+
+// Handle very small screens
+@media (max-height: 600px) {
+    .container2 {
+        padding: 60px 10px 10px;
+        gap: 8px;
+    }
+
+    .common-title ion-title {
+        font-size: 18px;
+    }
+
+    .input-group {
+        margin-bottom: 8px;
+    }
+
+    .custome-button {
+        margin: 5px 0;
+        --padding-top: 10px;
+        --padding-bottom: 10px;
+    }
+
+    ion-card.custom-gap {
+        margin: 8px 0;
+    }
+}
+
+// Landscape orientation adjustments
+@media (max-height: 400px) and (orientation: landscape) {
+    .container2 {
+        padding: 50px 10px 5px;
+        gap: 5px;
+    }
+
+    .common-title ion-title {
+        font-size: 16px;
+    }
+
+    .input-group__input {
+        height: 40px;
+        padding: 8px;
+    }
+
+    ion-card-content {
+        padding: 8px;
+        font-size: 11px;
+    }
+}
+
+// Ensure text doesn't overflow
+ion-card-content p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin: 4px 0;
+}
+
+// Better spacing for different screen densities
+@media (-webkit-device-pixel-ratio: 2) {
+    ion-card {
+        margin: 8px 0;
+    }
+}
+
+@media (-webkit-device-pixel-ratio: 3) {
+    ion-card {
+        margin: 6px 0;
+    }
+}

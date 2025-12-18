@@ -18,6 +18,7 @@ ion-card {
   margin: 5px 15px;
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  min-height: 140px;
 }
 .badge-row {
   display: flex;
@@ -296,4 +297,144 @@ ion-card-content {
 
 .red {
 color: #ffa809;
+}
+
+// Responsive Design for Small Screens
+@media (max-width: 480px) {
+  ion-card {
+    margin: 3px 8px;
+    min-height: 120px;
+  }
+
+  ion-list {
+    padding-bottom: calc(var(--ion-safe-area-bottom, 0) + 30px);
+  }
+
+  .status-badge--neon {
+    font-size: 10px;
+    padding: 0 12px;
+    letter-spacing: 0.5px;
+  }
+
+  ion-label h2 {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 6px;
+  }
+
+  ion-label p {
+    font-size: 11px;
+    margin: 1px 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .action-button {
+    font-size: 0.75rem;
+    padding: 0 4px;
+    width: 40%;
+
+    img {
+      height: 16px;
+      right: 4px;
+    }
+  }
+
+  .button-container {
+    padding: 8px 0 0;
+  }
+}
+
+@media (max-width: 360px) {
+  ion-card {
+    margin: 2px 5px;
+    min-height: 110px;
+  }
+
+  .status-badge--neon {
+    font-size: 9px;
+    padding: 0 8px;
+  }
+
+  ion-label h2 {
+    font-size: 13px;
+    line-height: 22px;
+  }
+
+  ion-label p {
+    font-size: 10px;
+  }
+
+  .action-button {
+    font-size: 0.7rem;
+    width: 38%;
+  }
+}
+
+// Handle very small screens
+@media (max-height: 500px) {
+  ion-card {
+    min-height: 100px;
+  }
+
+  ion-label h2 {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  ion-label p {
+    font-size: 9px;
+  }
+
+  .status-badge--neon {
+    font-size: 8px;
+    padding: 0 6px;
+  }
+}
+
+// Landscape orientation adjustments
+@media (max-height: 500px) and (orientation: landscape) {
+  ion-card {
+    min-height: 80px;
+  }
+
+  ion-label h2 {
+    font-size: 11px;
+    line-height: 18px;
+  }
+
+  ion-label p {
+    font-size: 8px;
+  }
+
+  .action-button {
+    font-size: 0.65rem;
+    padding: 0 2px;
+  }
+}
+
+// Ensure text doesn't overflow
+ion-label p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+ion-label h2 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+// Better spacing for different screen densities
+@media (-webkit-device-pixel-ratio: 2) {
+  ion-card {
+    margin: 4px 12px;
+  }
+}
+
+@media (-webkit-device-pixel-ratio: 3) {
+  ion-card {
+    margin: 3px 10px;
+  }
 }
