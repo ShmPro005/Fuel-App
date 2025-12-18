@@ -4,6 +4,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { FuelCostRecord } from 'src/app/models/fuel-cost-record.model';
 import { NavController, ToastController } from '@ionic/angular';
 import { FuelCostStorageService } from 'src/app/shared/srv/fuel-cost-storage.service';
+import { SaveDataService } from 'src/app/shared/srv/save-data.service';
 import { UtilService } from 'src/app/shared/srv/util.service';
 import { AdsService } from 'src/app/shared/srv/ads.service';
 import { LoadingService } from 'src/app/shared/srv/loading.service';
@@ -22,6 +23,7 @@ export class FuelCostCalculatorPage {
  
   constructor(
     public fuelCostStorage: FuelCostStorageService,
+    private saveDataService: SaveDataService,
     public toastController: ToastController,
     public navCtrl: NavController,
     private cd: ChangeDetectorRef,
@@ -31,8 +33,14 @@ export class FuelCostCalculatorPage {
   ) {}
 
   calculateFuelCost() {
+    // const record:any = {
+    //   distance: this.distance,
+    //   average: this.average,
+    // }
+    // this.saveDataService.openSaveModal(record);
     // this.adsService.showAdMobInterstitialAd();
     if (this.distance && this.average && this.fuelPrice) {
+      this.loadingService.startLoader();
         setTimeout(() => {
           const litersNeeded = this.distance / this.average;
           this.result = parseFloat((litersNeeded * this.fuelPrice).toFixed(2));
@@ -60,24 +68,15 @@ export class FuelCostCalculatorPage {
         date: new Date().toISOString(),
       };
 
-      try {
-        await this.fuelCostStorage.saveRecord(record);
-        this.utilService.showToast('Record saved successfully!', 2000, 'warning');
-
-        // this.presentToast('Record saved successfully!');
+      const action = await this.saveDataService.openSaveModal(record);
+      if (action === 'save' || action === 'saveWithoutData') {
         this.resetForm();
-        setTimeout(() => {
-           this.navCtrl.navigateForward('/tabs/history');
-           this.loadingService.stopLoader();
-        }, 3000);
-      } catch (error) {
-        // console.log('Error saving record:', error);
-        this.utilService.showToast('Failed to save record.', 2000, 'warning');
-        // this.presentToast('Failed to save record.');
+      } else if (action === 'cancel') {
+        // Handle cancel action - form remains as is
+        console.log('User cancelled the save operation');
       }
     } else {
       this.utilService.showToast('No result to save.', 2000, 'warning');
-      // this.presentToast('No result to save.');
     }
   }
 

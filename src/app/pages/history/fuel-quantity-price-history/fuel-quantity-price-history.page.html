@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/history"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Car Miles Record</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container4">
+    <ion-list *ngIf="!utilService.isLoading">
+      <ion-item-sliding *ngFor="let record of records">
+        <ion-card>
+          <ion-card-content>
+            <div class="list-container">
+              <div class="badge-row">
+                <span class="status-badge--neon">
+                    <span class="status-dot"></span>
+                    {{ (record.title || record.fuelType) | translate }}
+                </span>
+              </div>
+              <ion-label>
+                <p>{{ 'TOTAL_FUEL_QUANTITY' | translate }}: {{ record.fuelQuantity | number:'1.2-2' }} L</p>
+                <p>{{ 'FUEL_PRICE' | translate }}: {{ record.fuelPrice | number:'1.2-2' }}</p>
+                <!-- Optional fields -->
+                <p *ngIf="record.name">Name: {{ record.name }}</p>
+                <p *ngIf="record.villageName">Village: {{ record.villageName }}</p>
+                <p *ngIf="record.mobile">Mobile: {{ record.mobile }}</p>
+                <p *ngIf="record.notes">Notes: {{ record.notes }}</p>
+                <p>{{ 'DATE' | translate }}: {{ record.date | date:'short' }}</p>
+                <h2>{{ 'TOTAL_QUANTITY_FUEL_PRICE' | translate }}: {{ record.totalCost | number:'1.2-2' }}</h2>
+              </ion-label>
+            </div>
+
+            <div class="button-container">
+              <ion-button fill="clear" class="action-button custome-button" (click)="deleteRecord(record); $event.stopPropagation()">
+                <img src="../../../assets/icon/delete_4.png" alt="" height="20px">
+                Delete
+              </ion-button>
+             <div class="button-divider"></div>
+
+              <ion-button fill="clear" class="action-button custome-button" (click)="shareRecord(record); $event.stopPropagation()">
+                <img src="../../../assets/icon/share1.png" alt="" height="20px">
+                Share
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-card *ngIf="!utilService.isOnline && records.length === 0">
+      <ion-card-content>
+        {{ 'NO_RECORDS' | translate }}
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Show Message if No Records Are Available -->
+    <div class="no-data-message" *ngIf="!utilService.isLoading && records.length === 0">
+      <p>{{ 'NO_RECORDS' | translate }}</p>
+    </div>
+  </div>
+</ion-content>

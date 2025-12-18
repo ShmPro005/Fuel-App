@@ -75,6 +75,7 @@
     "PLEASE_FILL_ALL_FIELDS": "कृपया सभी फ़ील्ड भरें।",
     "RESULT": "परिणाम",
     "TOTAL_COST": "कुल लागत",
+    "TOTAL_EXPENSE_COST": "कुल व्यय लागत",
     "FUEL_AMOUNT": "कितने का ईंधन डाला",
     "TOTAL_FUEL_PRICE": "कुल ईंधन की कीमत",
     "TOTAL_QUANTITY_FUEL_PRICE": "कुल ईंधन कीमत",
@@ -136,5 +137,25 @@
     "JCB_HOUR_WISE_MONEY_COST_CALCULATION": "JCB घंटे अनुसार धन लागत गणना",
     "JCB_FERA_COST_CALCULATION": "JCB फेरा लागत गणना",
 
-    "EXAMPLE": "उदाहरण: 3 घंटे 25 मिनट = 3.25"
+    "EXAMPLE": "उदाहरण: 3 घंटे 25 मिनट = 3.25",
+
+    "SAVE_RECORD_TITLE": "रिकॉर्ड सहेजें",
+    "SAVE_RECORD_DESCRIPTION": "क्या आप अतिरिक्त विवरण जोड़ना चाहेंगे? (वैकल्पिक)",
+    "NAME_LABEL": "नाम",
+    "VILLAGE_NAME_LABEL": "गाँव का नाम",
+    "MOBILE_LABEL": "मोबाइल",
+    "NOTES_LABEL": "नोट्स",
+    "NOTES_PLACEHOLDER": "कोई अतिरिक्त नोट दर्ज करें...",
+    "SAVE_WITHOUT_DATA": "डेटा के बिना सहेजें",
+    "SAVE_AND_GO_AHEAD": "सहेजें और आगे बढ़ें",
+    "CANCEL": "रद्द करें",
+
+    "JCB_HISTORY": "JCB इतिहास",
+    "CAR_HISTORY": "कार इतिहास",
+    "TRACTOR_HISTORY": "ट्रैक्टर इतिहास",
+    "MINI_TRACTOR_HISTORY": "मिनी ट्रैक्टर इतिहास",
+    "FUEL_QUANTITY_HISTORY": "ईंधन मात्रा इतिहास",
+    "FUEL_PRICE_HISTORY": "ईंधन कीमत इतिहास",
+    "RANGE_CALCULATOR_HISTORY": "रेंज कैलकुलेटर इतिहास",
+    "TIME_CALCULATOR_HISTORY": "समय कैलकुलेटर इतिहास"
   }

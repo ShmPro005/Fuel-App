@@ -74,6 +74,7 @@
     "PLEASE_FILL_ALL_FIELDS": "કૃપા કરીને બધા ક્ષેત્રો ભરો.",
     "RESULT": "પરિણામ",
     "TOTAL_COST": "કુલ ઇંધણ ખર્ચ",
+    "TOTAL_EXPENSE_COST": "કુલ ખર્ચ",
     "FUEL_AMOUNT": "કેટલાનું ઇંધણ નાખ્યું",
     "TOTAL_FUEL_PRICE": "ટોટલ ઇંધણની કિંમત",
     "TOTAL_QUANTITY_FUEL_PRICE": "કુલ ઇંધણ કિંમત",
@@ -123,5 +124,25 @@
     "JCB_HOUR_WISE_MONEY_COST_CALCULATION": "JCB કલાક પ્રમાણે નાણાં ખર્ચ ગણતરી",
     "JCB_FERA_COST_CALCULATION": "JCB ફેરા ખર્ચ ગણતરી",
 
-    "EXAMPLE": "ઉદાહરણ: 3 કલાક ૨૫ મિનિટ = 3.૨૫"
+    "EXAMPLE": "ઉદાહરણ: 3 કલાક ૨૫ મિનિટ = 3.૨૫",
+
+    "SAVE_RECORD_TITLE": "રેકોર્ડ સાચવો",
+    "SAVE_RECORD_DESCRIPTION": "શું તમે વધારાની માહિતી ઉમેરવા માંગો છો?",
+    "NAME_LABEL": "નામ",
+    "VILLAGE_NAME_LABEL": "ગામનું નામ",
+    "MOBILE_LABEL": "મોબાઇલ",
+    "NOTES_LABEL": "નોંધ",
+    "NOTES_PLACEHOLDER": "કોઈપણ વધારાની નોંધ દાખલ કરો...",
+    "SAVE_WITHOUT_DATA": "ના-માહિતી વિના સાચવો",
+    "SAVE_AND_GO_AHEAD": "હા-સાચવો અને આગળ વધો",
+    "CANCEL": "રદ કરો",
+
+    "JCB_HISTORY": "JCB રેકૉર્ડ",
+    "CAR_HISTORY": "કાર રેકૉર્ડ",
+    "TRACTOR_HISTORY": "ટ્રેક્ટર રેકૉર્ડ",
+    "MINI_TRACTOR_HISTORY": "મિની ટ્રેક્ટર રેકૉર્ડ",
+    "FUEL_QUANTITY_HISTORY": "ઇંધણ માત્રા રેકૉર્ડ",
+    "FUEL_PRICE_HISTORY": "ઇંધણ કિંમત રેકૉર્ડ",
+    "RANGE_CALCULATOR_HISTORY": "રેન્જ કેલ્ક્યુલેટર રેકૉર્ડ",
+    "TIME_CALCULATOR_HISTORY": "સમય કેલ્ક્યુલેટર રેકૉર્ડ"
   }

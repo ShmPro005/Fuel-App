@@ -43,6 +43,38 @@ export class HistoryPage implements OnInit, ViewWillEnter {
     this.navCtrl.navigateForward('/tabs/home');
   }
 
+  goToCarHistory() {
+    this.navCtrl.navigateForward('/tabs/car-history');
+  }
+
+  goToTractorHistory() {
+    this.navCtrl.navigateForward('/tabs/tractor-history');
+  }
+
+  goToMiniTractorHistory() {
+    this.navCtrl.navigateForward('/tabs/mini-tractor-history');
+  }
+
+  goToJCBHistory() {
+    this.navCtrl.navigateForward('/tabs/jcb-history');
+  }
+
+  goToFuelQuantityHistory() {
+    this.navCtrl.navigateForward('/tabs/fuel-quantity-calculator-history');
+  }
+
+  goToFuelQuantityPriceHistory() {
+    this.navCtrl.navigateForward('/tabs/fuel-quantity-price-history');
+  }
+
+  goToRangeCalculatorHistory() {
+    this.navCtrl.navigateForward('/tabs/range-calculator-history');
+  }
+
+  goToTimeCalculatorHistory() {
+    this.navCtrl.navigateForward('/tabs/time-calculator-history');
+  }
+
   async loadRecords() {
     try {
       // Show loading only if records are empty (first load)
@@ -133,6 +165,26 @@ export class HistoryPage implements OnInit, ViewWillEnter {
 
     if (calculationType === 'FUEL_COST') {
       const isMachinery = record.totalHours !== undefined;
+      let optionalDataSection = '';
+      if (record.name || record.villageName || record.mobile || record.notes) {
+        if (selectedLanguage === 'en') {
+          if (record.name) optionalDataSection += `\n👤 Name: ${record.name}`;
+          if (record.villageName) optionalDataSection += `\n🏠 Village: ${record.villageName}`;
+          if (record.mobile) optionalDataSection += `\n📱 Mobile: ${record.mobile}`;
+          if (record.notes) optionalDataSection += `\n📝 Notes: ${record.notes}`;
+        } else if (selectedLanguage === 'hi') {
+          if (record.name) optionalDataSection += `\n👤 नाम: ${record.name}`;
+          if (record.villageName) optionalDataSection += `\n🏠 गांव: ${record.villageName}`;
+          if (record.mobile) optionalDataSection += `\n📱 मोबाइल: ${record.mobile}`;
+          if (record.notes) optionalDataSection += `\n📝 नोट्स: ${record.notes}`;
+        } else if (selectedLanguage === 'gu') {
+          if (record.name) optionalDataSection += `\n👤 નામ: ${record.name}`;
+          if (record.villageName) optionalDataSection += `\n🏠 ગામ: ${record.villageName}`;
+          if (record.mobile) optionalDataSection += `\n📱 મોબાઇલ: ${record.mobile}`;
+          if (record.notes) optionalDataSection += `\n📝 નોંધ: ${record.notes}`;
+        }
+      }
+
       const appDetails: any = {
         en: isMachinery ? `⛽ Machinery Fuel Calculation Made Easy! 🚜💨
     Check out my fuel expense details:
@@ -141,9 +193,9 @@ export class HistoryPage implements OnInit, ViewWillEnter {
 
     ⏱️ Total Hours: ${record.totalHours}
     ⛽ Average: ${record.fuelAvgPerHour} per hour
-    💰 Fuel Price: ${record.fuelPrice} per/liter
+    💰 Fuel Price: ${record.fuelPrice} per/liter}${optionalDataSection}
     --------------------------------------------
-    🚜 Total Fuel Cost: ${record.totalCost}
+    🚜 Total Fuel Cost: $${record.totalCost.toFixed(2)}
 
     📅 Date: ${new Date(record.date).toLocaleDateString()}
 
@@ -155,9 +207,9 @@ export class HistoryPage implements OnInit, ViewWillEnter {
 
     🛣️ Distance: ${record.distance} KM
     ⛽ Average: ${record.average} KM/L
-    💰 Fuel Price: ${record.fuelPrice} per/liter
+    💰 Fuel Price: ${record.fuelPrice} per/liter}${optionalDataSection}
     --------------------------------------------
-    🚗 Total Fuel Cost: ${record.totalCost}
+    🚗 Total Fuel Cost: $${record.totalCost.toFixed(2)}
 
     📅 Date: ${new Date(record.date).toLocaleDateString()}
 
@@ -171,9 +223,9 @@ export class HistoryPage implements OnInit, ViewWillEnter {
 
     ⏱️ कुल घंटे: ${record.totalHours}
     ⛽ औसत: ${record.fuelAvgPerHour} प्रति घंटा
-    💰 ईंधन मूल्य: ${record.fuelPrice} प्रति/लीटर
+    💰 ईंधन मूल्य: ${record.fuelPrice} प्रति/लीटर}${optionalDataSection}
     ----------------------------------------
-    🚜 कुल ईंधन लागत: ${record.totalCost}
+    🚜 कुल ईंधन लागत: ₹${record.totalCost.toFixed(2)}
 
     📅 दिनांक: ${new Date(record.date).toLocaleDateString()}
 
@@ -185,9 +237,9 @@ export class HistoryPage implements OnInit, ViewWillEnter {
 
     🛣️ दूरी: ${record.distance} KM
     ⛽ औसत: ${record.average} KM/L
-    💰 ईंधन मूल्य: ${record.fuelPrice} प्रति/लीटर
+    💰 ईंधन मूल्य: ${record.fuelPrice} प्रति/लीटर}${optionalDataSection}
     ----------------------------------------
-    🚗 कुल ईंधन लागत: ${record.totalCost}
+    🚗 कुल ईंधन लागत: ₹${record.totalCost.toFixed(2)}
 
     📅 दिनांक: ${new Date(record.date).toLocaleDateString()}
 
@@ -201,9 +253,9 @@ export class HistoryPage implements OnInit, ViewWillEnter {
 
     ⏱️ કુલ કલાક: ${record.totalHours}
     ⛽ એવરેજ: ${record.fuelAvgPerHour} પ્રતિ કલાક
-    💰 ઇંધણ કિંમત: ${record.fuelPrice} પ્રતિ/લીટર
+    💰 ઇંધણ કિંમત: ${record.fuelPrice} પ્રતિ/લીટર}${optionalDataSection}
     ------------------------------------------
-    🚜 કુલ ઇંધણ ખર્ચ: ${record.totalCost}
+    🚜 કુલ ઇંધણ ખર્ચ: ₹${record.totalCost.toFixed(2)}
 
     📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
 
@@ -215,9 +267,9 @@ export class HistoryPage implements OnInit, ViewWillEnter {
 
     🛣️ અંતર: ${record.distance} KM
     ⛽ એવરેજ: ${record.average} KM/L
-    💰 ઇંધણ કિંમત: ${record.fuelPrice} પ્રતિ/લીટર
+    💰 ઇંધણ કિંમત: ${record.fuelPrice} પ્રતિ/લીટર}${optionalDataSection}
     ------------------------------------------
-    🚗 કુલ ઇંધણ ખર્ચ: ${record.totalCost}
+    🚗 કુલ ઇંધણ ખર્ચ: ₹${record.totalCost.toFixed(2)}
 
     📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
 
@@ -267,7 +319,7 @@ export class HistoryPage implements OnInit, ViewWillEnter {
     🕒 શરૂઆતનો સમય: ${record.startTime}
     🕒 અંતનો સમય: ${record.endTime}
     ⏸️ બ્રેક સમય: ${record.breakTime || 0} મિનિટ
-    ------------------------------------------
+    ------------------------------------------  
     ⏱️ કુલ કામના કલાક: ${record.totalWorkedHours}
 
     📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
@@ -315,7 +367,7 @@ export class HistoryPage implements OnInit, ViewWillEnter {
 
     💵 પ્રતિ કલાક દર: ${record.hourlyRate}
     ⏱️ કુલ કલાક: ${record.totalHours}
-    ------------------------------------------
+    ------------------------------------------  
     💰 કુલ ખર્ચ: ${record.totalCost}
 
     📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
@@ -363,7 +415,7 @@ export class HistoryPage implements OnInit, ViewWillEnter {
 
     📏 અંતર: ${record.distanceKm} KM
     💰 પ્રતિ KM ખર્ચ: ${record.costPerKm}
-    ------------------------------------------
+    ------------------------------------------  
     💸 કુલ ખર્ચ: ${record.totalCost}
 
     📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
@@ -397,6 +449,54 @@ export class HistoryPage implements OnInit, ViewWillEnter {
       console.error('Error clearing records:', error);
       this.presentToast('Failed to clear records.');
     }
+  }
+
+  getRecordCount(type: string): number {
+    if (!this.records || this.records.length === 0) {
+      return 0;
+    }
+
+    // Handle fuel types
+    if (type === 'CAR') {
+      return this.records.filter(record =>
+        record.fuelType?.toUpperCase() === 'CAR' ||
+        record.fuelType?.toUpperCase() === 'PETROL' ||
+        record.fuelType?.toUpperCase() === 'DIESEL'
+      ).length;
+    } else if (type === 'TRACTOR') {
+      return this.records.filter(record =>
+        record.fuelType?.toUpperCase() === 'TRACTOR'
+      ).length;
+    } else if (type === 'MINI_TRACTOR') {
+      return this.records.filter(record =>
+        record.fuelType?.toUpperCase() === 'MINI_TRACTOR' ||
+        record.fuelType?.toUpperCase() === 'MINI-TRACTOR'
+      ).length;
+    } else if (type === 'JCB') {
+      return this.records.filter(record =>
+        record.fuelType?.toUpperCase() === 'JCB'
+      ).length;
+    }
+    // Handle calculation types
+    else if (type === 'FUEL_QUANTITY') {
+      return this.records.filter(record =>
+        record.calculationType === 'FUEL_QUANTITY'
+      ).length;
+    } else if (type === 'FUEL_QUANTITY_PRICE') {
+      return this.records.filter(record =>
+        record.calculationType === 'FUEL_QUANTITY_PRICE'
+      ).length;
+    } else if (type === 'RANGE_CALCULATOR') {
+      return this.records.filter(record =>
+        record.calculationType === 'RANGE_CALCULATOR'
+      ).length;
+    } else if (type === 'TIME_CALCULATOR') {
+      return this.records.filter(record =>
+        record.calculationType === 'TIME_CALCULATOR'
+      ).length;
+    }
+
+    return 0;
   }
 
   async presentToast(message: string) {

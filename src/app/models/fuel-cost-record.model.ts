@@ -24,4 +24,8 @@ export interface FuelCostRecord {
     minutes?: number;      // Calculated minutes (for time calculator)
     seconds?: number;      // Calculated seconds (for time calculator)
     title?: string;        // Custom title for the record
+    name?: string;         // Optional name field
+    villageName?: string;  // Optional village name field
+    mobile?: string;       // Optional mobile number field
+    notes?: string;        // Optional notes field
   }

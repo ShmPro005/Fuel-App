@@ -76,6 +76,7 @@
     "PLEASE_FILL_ALL_FIELDS": "Please fill in all fields.",
     "RESULT": "Result",
     "TOTAL_COST": "Total Cost",
+    "TOTAL_EXPENSE_COST": "Total Expense Cost",
     "FUEL_AMOUNT": "Total Fuel Amount",
     "TOTAL_FUEL_PRICE": "Total fuel price",
     "TOTAL_QUANTITY_FUEL_PRICE": "Quantity Fuel Price",
@@ -125,5 +126,25 @@
     "JCB_HOUR_WISE_MONEY_COST_CALCULATION": "JCB Hourly Money Cost Cal",
     "JCB_FERA_COST_CALCULATION": "JCB Fera Cost Cal",
 
-    "EXAMPLE": "Example: 3 hours 25 minutes = 3.25"
+    "EXAMPLE": "Example: 3 hours 25 minutes = 3.25",
+
+    "SAVE_RECORD_TITLE": "Save Record",
+    "SAVE_RECORD_DESCRIPTION": "Would you like to add additional details? (Optional)",
+    "NAME_LABEL": "Name",
+    "VILLAGE_NAME_LABEL": "Village Name",
+    "MOBILE_LABEL": "Mobile",
+    "NOTES_LABEL": "Notes",
+    "NOTES_PLACEHOLDER": "Enter any additional notes...",
+    "SAVE_WITHOUT_DATA": "Save without data",
+    "SAVE_AND_GO_AHEAD": "Save and go ahead",
+    "CANCEL": "Cancel",
+
+    "JCB_HISTORY": "JCB History",
+    "CAR_HISTORY": "Car History",
+    "TRACTOR_HISTORY": "Tractor History",
+    "MINI_TRACTOR_HISTORY": "Mini Tractor History",
+    "FUEL_QUANTITY_HISTORY": "Fuel Quantity History",
+    "FUEL_PRICE_HISTORY": "Fuel Price History",
+    "RANGE_CALCULATOR_HISTORY": "Range Calculator History",
+    "TIME_CALCULATOR_HISTORY": "Time Calculator History"
   }

@@ -296,7 +296,150 @@ and (max-height: 920px) {
     color: #8b4513; /* Saddle Brown for Tractor */
   }
 
- .red {
+  .red {
   color: #ffa809;
  }
- 
+
+// Category Grid Styles
+.history-container {
+  padding: 35px;
+  padding-top: calc(var(--ion-safe-area-top, 0) + 65px);
+  padding-bottom: calc(var(--ion-safe-area-bottom, 0) + 20px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  justify-items: center;
+  flex: 1;
+  align-content: start;
+}
+
+.category-card {
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 1; /* Makes cards square */
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.category-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  height: 100%;
+  text-align: center;
+}
+
+.category-icon {
+  margin-bottom: 8px;
+}
+
+.category-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.category-info h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.record-count {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+// Colorful backgrounds for each card
+.car-card {
+  background: linear-gradient(135deg, #ff6b6b, #ffa726);
+}
+
+.tractor-card {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+}
+
+.mini-tractor-card {
+  background: linear-gradient(135deg, #a8e6cf, #52c234);
+}
+
+.jcb-card {
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+}
+
+.fuel-quantity-card {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.fuel-price-card {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.range-card {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.time-card {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+// Responsive adjustments
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .category-card {
+    max-width: none;
+    min-height: 100px;
+  }
+
+  .category-content {
+    padding: 12px;
+  }
+
+  .category-icon img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .category-info h3 {
+    font-size: 12px;
+  }
+
+  .record-count {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .category-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .category-card {
+    max-width: 200px;
+    min-height: 140px;
+  }
+}

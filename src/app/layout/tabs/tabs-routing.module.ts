@@ -53,6 +53,38 @@ const routes: Routes = [
         loadChildren: () => import('../../pages/history/history.module').then(m => m.HistoryPageModule)
       },
       {
+        path: 'car-history',
+        loadChildren: () => import('../../pages/history/car-history/car-history.module').then(m => m.CarHistoryPageModule)
+      },
+      {
+        path: 'tractor-history',
+        loadChildren: () => import('../../pages/history/tractor-history/tractor-history.module').then(m => m.TractorHistoryPageModule)
+      },
+      {
+        path: 'mini-tractor-history',
+        loadChildren: () => import('../../pages/history/mini-tractor-history/mini-tractor-history.module').then(m => m.MiniTractorHistoryPageModule)
+      },
+      {
+        path: 'jcb-history',
+        loadChildren: () => import('../../pages/history/jcb-history/jcb-history.module').then(m => m.JcbHistoryPageModule)
+      },
+      {
+        path: 'fuel-quantity-calculator-history',
+        loadChildren: () => import('../../pages/history/fuel-quantity-calculator-history/fuel-quantity-calculator-history.module').then(m => m.FuelQuantityCalculatorHistoryPageModule)
+      },
+      {
+        path: 'fuel-quantity-price-history',
+        loadChildren: () => import('../../pages/history/fuel-quantity-price-history/fuel-quantity-price-history.module').then(m => m.FuelQuantityPriceHistoryPageModule)
+      },
+      {
+        path: 'range-calculator-history',
+        loadChildren: () => import('../../pages/history/range-calculator-history/range-calculator-history.module').then(m => m.RangeCalculatorHistoryPageModule)
+      },
+      {
+        path: 'time-calculator-history',
+        loadChildren: () => import('../../pages/history/time-calculator-history/time-calculator-history.module').then(m => m.TimeCalculatorHistoryPageModule)
+      },
+      {
         path: 'tractor-fuel-calculator',
         loadChildren: () => import('../../pages/tractor-fuel-calculator/tractor-fuel-calculator.module')
           .then(m => m.TractorFuelCalculatorPageModule)

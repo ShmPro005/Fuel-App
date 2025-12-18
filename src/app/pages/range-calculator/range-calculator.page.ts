@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { AdsService } from 'src/app/shared/srv/ads.service';
 import { LoadingService } from 'src/app/shared/srv/loading.service';
 import { FuelCostStorageService } from 'src/app/shared/srv/fuel-cost-storage.service';
+import { SaveDataService } from 'src/app/shared/srv/save-data.service';
 import { UtilService } from 'src/app/shared/srv/util.service';
 import { FuelCostRecord } from 'src/app/models/fuel-cost-record.model';
 
@@ -21,6 +22,7 @@ export class RangeCalculatorPage {
     private adsService: AdsService,
     public loadingService: LoadingService,
     private fuelCostStorage: FuelCostStorageService,
+    private saveDataService: SaveDataService,
     public utilService: UtilService,
     private navCtrl: NavController
   ) {}
@@ -41,30 +43,25 @@ export class RangeCalculatorPage {
 
   async saveRecord() {
     // this.adsService.showAdMobInterstitialAd();
+    const fuelType = localStorage.getItem("selectedFuel") || "PETROL";
     if (this.totalRange !== null) {
-      const fuelType = localStorage.getItem("selectedFuel") || "PETROL";
       const record: FuelCostRecord = {
         fuelPrice: this.fuelPrice,
         average: this.average,
         totalCost: this.fuelAmount,
         totalRange: this.totalRange,
         fuelType: fuelType,
-        date: new Date().toISOString(),
         calculationType: 'RANGE_CALCULATOR',
         title: 'CALCULATE_RANGE',
+        date: new Date().toISOString(),
       };
 
-      try {
-        await this.fuelCostStorage.saveRecord(record);
-        this.utilService.showToast('Record saved successfully!', 2000, 'warning');
-
+      const action = await this.saveDataService.openSaveModal(record);
+      if (action === 'save' || action === 'saveWithoutData') {
         this.resetForm();
-        setTimeout(() => {
-           this.navCtrl.navigateForward('/tabs/history');
-           this.loadingService.stopLoader();
-        }, 3000);
-      } catch (error) {
-        this.utilService.showToast('Failed to save record.', 2000, 'warning');
+      } else if (action === 'cancel') {
+        // Handle cancel action - form remains as is
+        console.log('User cancelled the save operation');
       }
     } else {
       this.utilService.showToast('No result to save.', 2000, 'warning');

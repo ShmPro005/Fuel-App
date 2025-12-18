@@ -26,6 +26,7 @@ export class TabsPage implements OnInit {
   isShowBack: boolean = false;
   stateSubscription!: Subscription;
   isHideBack: boolean = false;
+  dynamicTitle: string = 'Fuel Mitra'; // Default title
 
   constructor(
     private router: Router,
@@ -106,9 +107,9 @@ export class TabsPage implements OnInit {
     await alert.present();
   }
   updateActiveTabBasedOnUrl() {
- 
+
     if (this.currentUrl.includes('/tabs/home')) {
-    
+
       this.isShowBack = false;
     }else{
       this.isShowBack = true;
@@ -118,6 +119,29 @@ export class TabsPage implements OnInit {
       this.isHideBack = true;
     }else {
       this.isHideBack = false;
+    }
+
+    // Set dynamic title based on current URL
+    if (this.currentUrl.includes('/tabs/car-history')) {
+      this.dynamicTitle = 'CAR_HISTORY';
+    } else if (this.currentUrl.includes('/tabs/tractor-history')) {
+      this.dynamicTitle = 'TRACTOR_HISTORY';
+    } else if (this.currentUrl.includes('/tabs/mini-tractor-history')) {
+      this.dynamicTitle = 'MINI_TRACTOR_HISTORY';
+    } else if (this.currentUrl.includes('/tabs/jcb-history')) {
+      this.dynamicTitle = 'JCB_HISTORY';
+    } else if (this.currentUrl.includes('/tabs/fuel-quantity-calculator-history')) {
+      this.dynamicTitle = 'FUEL_QUANTITY_HISTORY';
+    } else if (this.currentUrl.includes('/tabs/fuel-quantity-price-history')) {
+      this.dynamicTitle = 'FUEL_PRICE_HISTORY';
+    } else if (this.currentUrl.includes('/tabs/range-calculator-history')) {
+      this.dynamicTitle = 'RANGE_CALCULATOR_HISTORY';
+    } else if (this.currentUrl.includes('/tabs/time-calculator-history')) {
+      this.dynamicTitle = 'TIME_CALCULATOR_HISTORY';
+    } else if (this.currentUrl.includes('/tabs/history')) {
+      this.dynamicTitle = 'HISTORY';
+    } else {
+      this.dynamicTitle = 'Fuel Mitra'; // Default title
     }
   }
 
@@ -135,6 +159,40 @@ export class TabsPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.navigateForward('/tabs/home');
+    // If on a history sub-page, go back to main history page
+    if (this.currentUrl.includes('/tabs/car-history') ||
+        this.currentUrl.includes('/tabs/tractor-history') ||
+        this.currentUrl.includes('/tabs/mini-tractor-history') ||
+        this.currentUrl.includes('/tabs/jcb-history') ||
+        this.currentUrl.includes('/tabs/fuel-quantity-calculator-history') ||
+        this.currentUrl.includes('/tabs/fuel-quantity-price-history') ||
+        this.currentUrl.includes('/tabs/range-calculator-history') ||
+        this.currentUrl.includes('/tabs/time-calculator-history')) {
+      this.navCtrl.navigateForward('/tabs/history');
+    }
+    // If on tractor fuel calculator sub-pages, go back to tractor fuel calculator
+    else if (this.currentUrl.includes('/tabs/tractor-fuel-calculator/tractor-fuel-cost') ||
+             this.currentUrl.includes('/tabs/tractor-fuel-calculator/tractor-worked-hours') ||
+             this.currentUrl.includes('/tabs/tractor-fuel-calculator/tractor-hour-wise-money-cost') ||
+             this.currentUrl.includes('/tabs/tractor-fuel-calculator/tractor-fera-cost')) {
+      this.navCtrl.navigateForward('/tabs/tractor-fuel-calculator');
+    }
+    // If on mini tractor fuel calculator sub-pages, go back to mini tractor fuel calculator
+    else if (this.currentUrl.includes('/tabs/mini-tractor-fuel-calculator/mini-tractor-fuel-cost') ||
+             this.currentUrl.includes('/tabs/mini-tractor-fuel-calculator/mini-tractor-worked-hours') ||
+             this.currentUrl.includes('/tabs/mini-tractor-fuel-calculator/mini-tractor-hour-wise-money-cost') ||
+             this.currentUrl.includes('/tabs/mini-tractor-fuel-calculator/mini-tractor-fera-cost')) {
+      this.navCtrl.navigateForward('/tabs/mini-tractor-fuel-calculator');
+    }
+    // If on JCB fuel calculator sub-pages, go back to JCB fuel calculator
+    else if (this.currentUrl.includes('/tabs/jcb-fuel-calculator/jcb-fuel-cost') ||
+             this.currentUrl.includes('/tabs/jcb-fuel-calculator/jcb-worked-hours') ||
+             this.currentUrl.includes('/tabs/jcb-fuel-calculator/jcb-hour-wise-money-cost') ||
+             this.currentUrl.includes('/tabs/jcb-fuel-calculator/jcb-fera-cost')) {
+      this.navCtrl.navigateForward('/tabs/jcb-fuel-calculator');
+    }
+    else {
+      this.navCtrl.navigateForward('/tabs/home');
+    }
  }
 }

@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar class="custom-header-toolbar">
+    <div class="common-title">
+      <ion-title>{{ 'SAVE_RECORD_TITLE' | translate }}</ion-title>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container2">
+    <p class="modal-description">{{ 'SAVE_RECORD_DESCRIPTION' | translate }}</p>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'NAME_LABEL' | translate }}</label>
+      <input
+        type="text"
+        class="input-group__input"
+        [(ngModel)]="name"  
+      />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'VILLAGE_NAME_LABEL' | translate }}</label>
+      <input
+        type="text"
+        class="input-group__input"
+        [(ngModel)]="villageName"
+      />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'MOBILE_LABEL' | translate }}</label>
+      <input
+        type="tel"
+        class="input-group__input"
+        [(ngModel)]="mobile"
+        (input)="onMobileInput($event)"
+        (keypress)="onMobileKeyPress($event)"
+        inputmode="numeric"
+        pattern="[0-9]*"
+      />
+    </div>
+
+    <div class="input-group">
+      <label class="input-group__label">{{ 'NOTES_LABEL' | translate }}</label>
+      <textarea
+        class="input-group__input"
+        [(ngModel)]="notes"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="button-container">
+      <ion-button class="custome-button custom-gap" fill="outline" (click)="saveWithoutData()">
+        {{ 'SAVE_WITHOUT_DATA' | translate }}
+      </ion-button>
+      <ion-button class="custome-button custom-gap" (click)="saveAndGoAhead()">
+        {{ 'SAVE_AND_GO_AHEAD' | translate }}
+      </ion-button>
+      <ion-button class="custome-button custom-gap" fill="outline" color="medium" (click)="dismissModal()">
+        {{ 'CANCEL' | translate }}
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

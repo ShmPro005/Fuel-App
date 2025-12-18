@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { IndexedDbService } from './shared/srv/indexed-db.service';
 import { AdsService } from './shared/srv/ads.service';
 import { DeviceBackBtnService } from './shared/srv/device-back-btn.service';
 import { ConfirmExitPopoverComponent } from './components/confirm-exit-popover/confirm-exit-popover.component';
+import { SaveDataModalComponent } from './components/save-data-modal/save-data-modal.component';
 import { PermissionService } from './shared/srv/permission.service';
 import { NetworkService } from './shared/srv/network.service';
 import { SharedModule } from './shared/shared-module/shared/shared.module';
@@ -31,8 +33,8 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent,ConfirmExitPopoverComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,SharedModule,HttpClientModule,
+  declarations: [AppComponent,ConfirmExitPopoverComponent, SaveDataModalComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,SharedModule,HttpClientModule, FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
