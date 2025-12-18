@@ -116,126 +116,239 @@ export class JcbHistoryPage implements OnInit, ViewWillEnter {
     await this.utilService.showLoading('Sharing...');
     const fuelType = record.fuelType;
     const calculationType = record.calculationType;
+    console.log('Preparing to share record:', record);
 
     const selectedLanguage = this.translateService.currentLang || 'en';
 
     let message = '';
 
-    if (calculationType) {
-      const isMachinery = record.totalHours !== undefined;
-      let optionalDataSection = '';
-      if (record.name || record.villageName || record.mobile || record.notes) {
-        if (selectedLanguage === 'en') {
-          if (record.name) optionalDataSection += `\n👤 Name: ${record.name}`;
-          if (record.villageName) optionalDataSection += `\n🏠 Village: ${record.villageName}`;
-          if (record.mobile) optionalDataSection += `\n📱 Mobile: ${record.mobile}`;
-          if (record.notes) optionalDataSection += `\n📝 Notes: ${record.notes}`;
-        } else if (selectedLanguage === 'hi') {
-          if (record.name) optionalDataSection += `\n👤 नाम: ${record.name}`;
-          if (record.villageName) optionalDataSection += `\n🏠 गांव: ${record.villageName}`;
-          if (record.mobile) optionalDataSection += `\n📱 मोबाइल: ${record.mobile}`;
-          if (record.notes) optionalDataSection += `\n📝 नोट्स: ${record.notes}`;
-        } else if (selectedLanguage === 'gu') {
-          if (record.name) optionalDataSection += `\n👤 નામ: ${record.name}`;
-          if (record.villageName) optionalDataSection += `\n🏠 ગામ: ${record.villageName}`;
-          if (record.mobile) optionalDataSection += `\n📱 મોબાઇલ: ${record.mobile}`;
-          if (record.notes) optionalDataSection += `\n📝 નોંધ: ${record.notes}`;
-        }
+    // Build optional data section
+    let optionalDataSection = '';
+    if (record.name || record.villageName || record.mobile || record.notes) {
+      if (selectedLanguage === 'en') {
+        if (record.name) optionalDataSection += `\n👤 Name: ${record.name}`;
+        if (record.villageName) optionalDataSection += `\n🏠 Village: ${record.villageName}`;
+        if (record.mobile) optionalDataSection += `\n📱 Mobile: ${record.mobile}`;
+        if (record.notes) optionalDataSection += `\n📝 Notes: ${record.notes}`;
+      } else if (selectedLanguage === 'hi') {
+        if (record.name) optionalDataSection += `\n👤 नाम: ${record.name}`;
+        if (record.villageName) optionalDataSection += `\n🏠 गांव: ${record.villageName}`;
+        if (record.mobile) optionalDataSection += `\n📱 मोबाइल: ${record.mobile}`;
+        if (record.notes) optionalDataSection += `\n📝 नोट्स: ${record.notes}`;
+      } else if (selectedLanguage === 'gu') {
+        if (record.name) optionalDataSection += `\n👤 નામ: ${record.name}`;
+        if (record.villageName) optionalDataSection += `\n🏠 ગામ: ${record.villageName}`;
+        if (record.mobile) optionalDataSection += `\n📱 મોબાઇલ: ${record.mobile}`;
+        if (record.notes) optionalDataSection += `\n📝 નોંધ: ${record.notes}`;
       }
+    }
 
+    // Create specific messages for each JCB calculation type
+    if (calculationType === 'FUEL_COST') {
       const appDetails: any = {
-        en: isMachinery ? `⛽ Machinery Fuel Calculation Made Easy! 🚜💨
-    Check out my fuel expense details:
-
-    Type: ${fuelType}
-
-    ⏱️ Total Hours: ${record.totalHours}
-    ⛽ Average: ${record.fuelAvgPerHour} per hour
-    💰 Fuel Price: ${record.fuelPrice} per/liter}${optionalDataSection}
-    --------------------------------------------
-    🚜 Total Fuel Cost: $${record.totalCost.toFixed(2)}
-
-    📅 Date: ${new Date(record.date).toLocaleDateString()}
-
-    Easily calculate your machinery fuel expenses with our app!
-    📲 Download now: ${shareAppUrl}` : `⛽ Fuel Calculation Made Easy! 🚗💨
-    Check out my fuel expense details:
+        en: `🏗️ JCB Fuel Cost Calculation! ⛽💨
+    Check out my JCB fuel expense details:
 
     Fuel Type: ${fuelType}
 
-    🛣️ Distance: ${record.distance} KM
-    ⛽ Average: ${record.average} KM/L
-    💰 Fuel Price: ${record.fuelPrice} per/liter}${optionalDataSection}
+    🛣️ Distance: ${record.distance || 'N/A'} KM
+    ⛽ Average: ${record.average || record.fuelAvgPerHour || 'N/A'} ${record.fuelAvgPerHour ? 'per hour' : 'KM/L'}
+    💰 Fuel Price: ${record.fuelPrice || 'N/A'} per/liter${optionalDataSection}
     --------------------------------------------
-    🚗 Total Fuel Cost: $${record.totalCost.toFixed(2)}
+    🏗️ Total Fuel Cost: $${record.totalCost?.toFixed(2) || 'N/A'}
 
     📅 Date: ${new Date(record.date).toLocaleDateString()}
 
-    Easily calculate your fuel expenses with our app!
+    Easily calculate your JCB fuel expenses with our app!
     📲 Download now: ${shareAppUrl}`,
 
-        hi: isMachinery ? `⛽ मशीनरी ईंधन गणना आसान! 🚜💨
-    मेरे ईंधन खर्च का विवरण देखें:
-
-    प्रकार: ${fuelType}
-
-    ⏱️ कुल घंटे: ${record.totalHours}
-    ⛽ औसत: ${record.fuelAvgPerHour} प्रति घंटा
-    💰 ईंधन मूल्य: ${record.fuelPrice} प्रति/लीटर}${optionalDataSection}
-    ----------------------------------------
-    🚜 कुल ईंधन लागत: ${record.totalCost.toFixed(2)}
-
-    📅 दिनांक: ${new Date(record.date).toLocaleDateString()}
-
-    हमारे ऐप से अपनी मशीनरी ईंधन खर्च की गणना करें!
-    📲 अभी डाउनलोड करें: ${shareAppUrl}` : `⛽ ईंधन गणना आसान! 🚗💨
-    मेरे ईंधन खर्च का विवरण देखें:
+        hi: `🏗️ JCB ईंधन लागत गणना! ⛽💨
+    मेरे JCB ईंधन खर्च का विवरण देखें:
 
     ईंधन प्रकार: ${fuelType}
 
-    🛣️ दूरी: ${record.distance} KM
-    ⛽ औसत: ${record.average} KM/L
-    💰 ईंधन मूल्य: ${record.fuelPrice} प्रति/लीटर}${optionalDataSection}
+    🛣️ दूरी: ${record.distance || 'N/A'} KM
+    ⛽ औसत: ${record.average || record.fuelAvgPerHour || 'N/A'} ${record.fuelAvgPerHour ? 'प्रति घंटा' : 'KM/L'}
+    💰 ईंधन मूल्य: ${record.fuelPrice || 'N/A'} प्रति/लीटर${optionalDataSection}
     ----------------------------------------
-    🚗 कुल ईंधन लागत: ${record.totalCost.toFixed(2)}
+    🏗️ कुल ईंधन लागत: ₹${record.totalCost?.toFixed(2) || 'N/A'}
 
     📅 दिनांक: ${new Date(record.date).toLocaleDateString()}
 
-    हमारे ऐप से अपने ईंधन खर्च की गणना करें!
+    हमारे ऐप से अपने JCB ईंधन खर्च की गणना करें!
     📲 अभी डाउनलोड करें: ${shareAppUrl}`,
 
-        gu: isMachinery ? `⛽ મશીનરી ઇંધણ ગણતરી સરળ! 🚜💨
-    મારા ઇંધણ ખર્ચનો વિગતવાર જુઓ:
-
-    પ્રકાર: ${fuelType}
-
-    ⏱️ કુલ કલાક: ${record.totalHours}
-    ⛽ એવરેજ: ${record.fuelAvgPerHour} પ્રતિ કલાક
-    💰 ઇંધણ કિંમત: ${record.fuelPrice} પ્રતિ/લીટર}${optionalDataSection}
-    ------------------------------------------
-    🚜 કુલ ઇંધણ ખર્ચ: ${record.totalCost.toFixed(2)}
-
-    📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
-
-    અમારા એપથી તમારી મશીનરી ઇંધણ ખર્ચની ગણતરી કરો!
-    📲 હમણાં ડાઉનલોડ કરો: ${shareAppUrl}` : `⛽ સરળ ઇંધણ ગણતરી! 🚗💨
-    મારા ઇંધણ ખર્ચનો વિગતવાર જુઓ:
+        gu: `🏗️ JCB ઇંધણ ખર્ચ ગણતરી! ⛽💨
+    મારા JCB ઇંધણ ખર્ચનો વિગતવાર જુઓ:
 
     ઇંધણ પ્રકાર: ${fuelType}
 
-    🛣️ અંતર: ${record.distance} KM
-    ⛽ એવરેજ: ${record.average} KM/L
-    💰 ઇંધણ કિંમત: ${record.fuelPrice} પ્રતિ/લીટર}${optionalDataSection}
+    🛣️ અંતર: ${record.distance || 'N/A'} KM
+    ⛽ એવરેજ: ${record.average || record.fuelAvgPerHour || 'N/A'} ${record.fuelAvgPerHour ? 'પ્રતિ કલાક' : 'KM/L'}
+    💰 ઇંધણ કિંમત: ${record.fuelPrice || 'N/A'} પ્રતિ/લીટર${optionalDataSection}
     ------------------------------------------
-    🚗 કુલ ઇંધણ ખર્ચ: ${record.totalCost.toFixed(2)}
+    🏗️ કુલ ઇંધણ ખર્ચ: ₹${record.totalCost?.toFixed(2) || 'N/A'}
 
     📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
 
-    અમારા એપથી તમારા ઇંધણ ખર્ચની ગણતરી કરો!
+    અમારા એપથી તમારા JCB ઇંધણ ખર્ચની ગણતરી કરો!
+    📲 હમણાં ડાઉનલોડ કરો: ${shareAppUrl}`
+      };
+      message = appDetails[selectedLanguage] || appDetails.en;
+
+    } else if (calculationType === 'WORKED_HOURS') {
+      const appDetails: any = {
+        en: `⏱️ JCB Worked Hours Calculation! 🏗️💨
+    Check out my JCB worked hours details:
+
+    Fuel Type: ${fuelType}
+
+    🕒 Start Time: ${record.startTime || 'N/A'}
+    🕒 End Time: ${record.endTime || 'N/A'}
+    ⏸️ Break Time: ${record.breakTime || 0} minutes${optionalDataSection}
+    --------------------------------------------
+    ⏱️ Total Worked Hours: ${record.totalWorkedHours || 'N/A'}
+
+    📅 Date: ${new Date(record.date).toLocaleDateString()}
+
+    Easily calculate your JCB worked hours with our app!
+    📲 Download now: ${shareAppUrl}`,
+
+        hi: `⏱️ JCB काम किए घंटे की गणना! 🏗️💨
+    मेरे JCB काम किए घंटे का विवरण देखें:
+
+    ईंधन प्रकार: ${fuelType}
+
+    🕒 प्रारंभ समय: ${record.startTime || 'N/A'}
+    🕒 समाप्ति समय: ${record.endTime || 'N/A'}
+    ⏸️ ब्रेक समय: ${record.breakTime || 0} मिनट${optionalDataSection}
+    ----------------------------------------
+    ⏱️ कुल काम किए घंटे: ${record.totalWorkedHours || 'N/A'}
+
+    📅 दिनांक: ${new Date(record.date).toLocaleDateString()}
+
+    हमारे ऐप से अपने JCB काम किए घंटे की गणना करें!
+    📲 अभी डाउनलोड करें: ${shareAppUrl}`,
+
+        gu: `⏱️ JCB કામ કરેલ કલાકની ગણતરી! 🏗️💨
+    મારા JCB કામ કરેલ કલાકનો વિગતવાર જુઓ:
+
+    ઇંધણ પ્રકાર: ${fuelType}
+
+    🕒 શરૂઆતનો સમય: ${record.startTime || 'N/A'}
+    🕒 અંતિમ સમય: ${record.endTime || 'N/A'}
+    ⏸️ બ્રેક સમય: ${record.breakTime || 0} મિનિટ${optionalDataSection}
+    ------------------------------------------
+    ⏱️ કુલ કામ કરેલ કલાક: ${record.totalWorkedHours || 'N/A'}
+
+    📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
+
+    અમારા એપથી તમારા JCB કામ કરેલ કલાકની ગણતરી કરો!
+    📲 હમણાં ડાઉનલોડ કરો: ${shareAppUrl}`
+      };
+      message = appDetails[selectedLanguage] || appDetails.en;
+
+    } else if (calculationType === 'HOUR_WISE_COST') {
+      const appDetails: any = {
+        en: `💰 JCB Hour Wise Cost Calculation! 🏗️💨
+    Check out my JCB hourly cost details:
+
+    Fuel Type: ${fuelType}
+
+    💵 Hourly Rate: ${record.hourlyRate || 'N/A'}
+    ⏱️ Total Hours: ${record.totalHours || 'N/A'}${optionalDataSection}
+    --------------------------------------------
+    💰 Total Cost: $${record.totalCost?.toFixed(2) || 'N/A'}
+
+    📅 Date: ${new Date(record.date).toLocaleDateString()}
+
+    Easily calculate your JCB hourly costs with our app!
+    📲 Download now: ${shareAppUrl}`,
+
+        hi: `💰 JCB घंटे अनुसार लागत गणना! 🏗️💨
+    मेरे JCB घंटे अनुसार लागत का विवरण देखें:
+
+    ईंधन प्रकार: ${fuelType}
+
+    💵 प्रति घंटा दर: ${record.hourlyRate || 'N/A'}
+    ⏱️ कुल घंटे: ${record.totalHours || 'N/A'}${optionalDataSection}
+    ----------------------------------------
+    💰 कुल लागत: ₹${record.totalCost?.toFixed(2) || 'N/A'}
+
+    📅 दिनांक: ${new Date(record.date).toLocaleDateString()}
+
+    हमारे ऐप से अपने JCB घंटे अनुसार लागत की गणना करें!
+    📲 अभी डाउनलोड करें: ${shareAppUrl}`,
+
+        gu: `💰 JCB કલાક અનુસાર ખર્ચ ગણતરી! 🏗️💨
+    મારા JCB કલાક અનુસાર ખર્ચનો વિગતવાર જુઓ:
+
+    ઇંધણ પ્રકાર: ${fuelType}
+
+    💵 પ્રતિ કલાક દર: ${record.hourlyRate || 'N/A'}
+    ⏱️ કુલ કલાક: ${record.totalHours || 'N/A'}${optionalDataSection}
+    ------------------------------------------
+    💰 કુલ ખર્ચ: ₹${record.totalCost?.toFixed(2) || 'N/A'}
+
+    📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
+
+    અમારા એપથી તમારા JCB કલાક અનુસાર ખર્ચની ગણતરી કરો!
+    📲 હમણાં ડાઉનલોડ કરો: ${shareAppUrl}`
+      };
+      message = appDetails[selectedLanguage] || appDetails.en;
+
+    } else 
+    if (calculationType === 'FERA_COST') {
+      const appDetails: any = {
+        en: `🌾 JCB Fera Cost Calculation! 🏗️💨
+    Check out my JCB fera cost details:
+
+    Fuel Type: ${fuelType}
+
+    📏 1 Fera Cost: ${record.distanceKm || 'N/A'} 
+    💰 Total Fera: ${record.costPerKm || 'N/A'}${optionalDataSection}
+    --------------------------------------------
+    💸 Total Fera Cost: $${record.totalCost?.toFixed(2) || 'N/A'}
+
+    📅 Date: ${new Date(record.date).toLocaleDateString()}
+
+    Easily calculate your JCB fera costs with our app!
+    📲 Download now: ${shareAppUrl}`,
+
+        hi: `🌾 JCB फेरा लागत गणना! 🏗️💨
+    मेरे JCB फेरा लागत का विवरण देखें:
+
+    ईंधन प्रकार: ${fuelType}
+
+    📏 1 फेरा लागत: ${record.distanceKm || 'N/A'} 
+    💰 कुल फेरा: ${record.costPerKm || 'N/A'}${optionalDataSection}
+    ----------------------------------------
+    💸 कुल फेरा लागत: ₹${record.totalCost?.toFixed(2) || 'N/A'}
+
+    📅 दिनांक: ${new Date(record.date).toLocaleDateString()}
+
+    हमारे ऐप से अपने JCB फेरा लागत की गणना करें!
+    📲 अभी डाउनलोड करें: ${shareAppUrl}`,
+
+        gu: `🌾 JCB ફેરા ખર્ચ ગણતરી! 🏗️💨
+    મારા JCB ફેરા ખર્ચનો વિગતવાર જુઓ:
+
+    ઇંધણ પ્રકાર: ${fuelType}
+
+    📏 1 એક ફેરાનો ભાવ: ${record.distanceKm || 'N/A'} 
+    💰 કુલ ફેરા: ${record.costPerKm || 'N/A'}${optionalDataSection}
+    ------------------------------------------
+    💸 કુલ ફેરા ખર્ચ: ₹${record.totalCost?.toFixed(2) || 'N/A'}
+
+    📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
+
+    અમારા એપથી તમારા JCB ફેરા ખર્ચની ગણતરી કરો!
     📲 હમણાં ડાઉનલોડ કરો: ${shareAppUrl}`
       };
       message = appDetails[selectedLanguage] || appDetails.en;
     }
+
+    // console.log('Share message prepared:', message);
 
     try {
       await Share.share({

@@ -143,45 +143,48 @@ export class RangeCalculatorHistoryPage implements OnInit, ViewWillEnter {
       }
 
       const appDetails: any = {
-        en: `⛽ Range Calculator Made Easy! 🚗💨
+        en: `🛣️ Range Calculator Made Easy! 🚗💨
     Check out my range calculation details:
 
     Fuel Type: ${fuelType}
 
-    ⛽ Fuel Quantity: ${record.fuelQuantity} Liters
-    🏎️ Average: ${record.average} KM/L}${optionalDataSection}
+    💸 Fuel Amount: $${record.totalCost?.toFixed(2) || 'N/A'}
+    💰 Fuel Price: ${record.fuelPrice || 'N/A'} per/liter
+    🏎️ Average: ${record.average || 'N/A'} KM/L}${optionalDataSection}
     --------------------------------------------
-    🛣️ Total Range: ${record.totalRange} KM
+    🛣️ Total Range: ${record.totalRange.toFixed(2) || 'N/A'} KM
 
     📅 Date: ${new Date(record.date).toLocaleDateString()}
 
     Easily calculate travel range with our app!
     📲 Download now: ${shareAppUrl}`,
 
-        hi: `⛽ रेंज कैलकुलेटर आसान! 🚗💨
+        hi: `🛣️ रेंज कैलकुलेटर आसान! 🚗💨
     मेरी रेंज कैलकुलेशन का विवरण देखें:
 
     ईंधन प्रकार: ${fuelType}
 
-    ⛽ ईंधन मात्रा: ${record.fuelQuantity} लीटर
-    🏎️ औसत: ${record.average} KM/L}${optionalDataSection}
+    💸 ईंधन राशि: ₹${record.totalCost?.toFixed(2) || 'N/A'}
+    💰 ईंधन मूल्य: ${record.fuelPrice || 'N/A'} प्रति/लीटर
+    🏎️ औसत: ${record.average || 'N/A'} KM/L}${optionalDataSection}
     ----------------------------------------
-    🛣️ कुल रेंज: ${record.totalRange} KM
+    🛣️ कुल रेंज: ${record.totalRange.toFixed(2) || 'N/A'} KM
 
     📅 दिनांक: ${new Date(record.date).toLocaleDateString()}
 
     हमारे ऐप से यात्रा रेंज की गणना करें!
     📲 अभी डाउनलोड करें: ${shareAppUrl}`,
 
-        gu: `⛽ રેન્જ કેલ્ક્યુલેટર સરળ! 🚗💨
+        gu: `🛣️ રેન્જ કેલ્ક્યુલેટર સરળ! 🚗💨
     મારી રેન્જ કેલ્ક્યુલેશનનો વિગતવાર જુઓ:
 
     ઇંધણ પ્રકાર: ${fuelType}
 
-    ⛽ ઇંધણ માત્રા: ${record.fuelQuantity} લીટર
-    🏎️ એવરેજ: ${record.average} KM/L}${optionalDataSection}
+    💸 ઇંધણ રકમ: ₹${record.totalCost?.toFixed(2) || 'N/A'}
+    💰 ઇંધણ કિંમત: ${record.fuelPrice || 'N/A'} પ્રતિ/લીટર
+    🏎️ એવરેજ: ${record.average || 'N/A'} KM/L}${optionalDataSection}
     ------------------------------------------
-    🛣️ કુલ રેન્જ: ${record.totalRange} KM
+    🛣️ કુલ રેન્જ: ${record.totalRange.toFixed(2) || 'N/A'} KM
 
     📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
 
@@ -190,6 +193,8 @@ export class RangeCalculatorHistoryPage implements OnInit, ViewWillEnter {
       };
       message = appDetails[selectedLanguage] || appDetails.en;
     }
+    console.log('Share message prepared:', message);
+    
 
     try {
       await Share.share({

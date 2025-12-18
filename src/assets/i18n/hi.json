@@ -103,8 +103,9 @@
     "TOTAL_FUEL_PRICE_CALCULATION": "कुल ईंधन की कीमत गणना",
 
     "1_FERA_COST": "1 फेरा लागत",
-    "PER_FERA_COST": "प्रति फेरा लागत",
-    "TOTAL_FERA": "कुल फेरा",
+    "PER_FERA_COST": "कुल फेरा",
+    "TOTAL_FERA": "कुल फेरा लागत",
+    "TOTAL_FERA_COST": "कुल फेरा लागत",
 
 
     "START_TIME": "प्रारंभ समय",

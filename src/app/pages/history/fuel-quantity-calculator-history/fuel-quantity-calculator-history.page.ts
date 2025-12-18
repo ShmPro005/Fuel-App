@@ -115,13 +115,13 @@ export class FuelQuantityCalculatorHistoryPage implements OnInit, ViewWillEnter 
 
     await this.utilService.showLoading('Sharing...');
     const fuelType = record.fuelType;
-    const calculationType = record;
+    const calculationType = record.calculationType;
 
     const selectedLanguage = this.translateService.currentLang || 'en';
 
     let message = '';
-  
-    if (calculationType) {
+
+    if (calculationType === 'FUEL_QUANTITY') {
       let optionalDataSection = '';
       if (record.name || record.villageName || record.mobile || record.notes) {
         if (selectedLanguage === 'en') {
@@ -148,10 +148,10 @@ export class FuelQuantityCalculatorHistoryPage implements OnInit, ViewWillEnter 
 
     Fuel Type: ${fuelType}
 
-    ⛽ Fuel Quantity: ${record.fuelQuantity} Liters
-    💰 Fuel Price: ${record.fuelPrice} per/liter}${optionalDataSection}
+    💸 Fuel Amount: $${record.totalCost?.toFixed(2) || 'N/A'}
+    💰 Fuel Price: ${record.fuelPrice || 'N/A'} per/liter}${optionalDataSection}
     --------------------------------------------
-    💸 Total Fuel Cost: ${record.totalCost.toFixed(2)}
+    ⛽ Liters: ${record.liters?.toFixed(2) || 'N/A'} L
 
     📅 Date: ${new Date(record.date).toLocaleDateString()}
 
@@ -163,10 +163,10 @@ export class FuelQuantityCalculatorHistoryPage implements OnInit, ViewWillEnter 
 
     ईंधन प्रकार: ${fuelType}
 
-    ⛽ ईंधन मात्रा: ${record.fuelQuantity} लीटर
-    💰 ईंधन मूल्य: ${record.fuelPrice} प्रति/लीटर}${optionalDataSection}
+    💸 ईंधन राशि: ₹${record.totalCost?.toFixed(2) || 'N/A'}
+    💰 ईंधन मूल्य: ${record.fuelPrice || 'N/A'} प्रति/लीटर}${optionalDataSection}
     ----------------------------------------
-    💸 कुल ईंधन लागत: ${record.totalCost.toFixed(2)}
+    ⛽ लीटर: ${record.liters?.toFixed(2) || 'N/A'} L
 
     📅 दिनांक: ${new Date(record.date).toLocaleDateString()}
 
@@ -178,10 +178,10 @@ export class FuelQuantityCalculatorHistoryPage implements OnInit, ViewWillEnter 
 
     ઇંધણ પ્રકાર: ${fuelType}
 
-    ⛽ ઇંધણ માત્રા: ${record.fuelQuantity} લીટર
-    💰 ઇંધણ કિંમત: ${record.fuelPrice} પ્રતિ/લીટર}${optionalDataSection}
+    💸 ઇંધણ રકમ: ₹${record.totalCost?.toFixed(2) || 'N/A'}
+    💰 ઇંધણ કિંમત: ${record.fuelPrice || 'N/A'} પ્રતિ/લીટર}${optionalDataSection}
     ------------------------------------------
-    💸 કુલ ઇંધણ ખર્ચ: ${record.totalCost.toFixed(2)}
+    ⛽ લીટર: ${record.liters?.toFixed(2) || 'N/A'} L
 
     📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
 
@@ -189,10 +189,9 @@ export class FuelQuantityCalculatorHistoryPage implements OnInit, ViewWillEnter 
     📲 હમણાં ડાઉનલોડ કરો: ${shareAppUrl}`
       };
       message = appDetails[selectedLanguage] || appDetails.en;
-
     }
-    console.log('Sending share message:', message);
-   
+
+    console.log('Share message prepared:', message);
     try {
       await Share.share({
         title: this.translateService.instant('SHARE_TITLE'),

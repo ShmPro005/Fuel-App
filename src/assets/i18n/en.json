@@ -93,8 +93,9 @@
     "TRACTOR_FERA_COST_CALCULATION": "Tractor Fera Cost Cal",
 
     "1_FERA_COST": "1 Fera Cost",
-    "PER_FERA_COST": "Per Fera Cost",
+    "PER_FERA_COST": "Total Fera",
     "TOTAL_FERA": "Total Fera",
+    "TOTAL_FERA_COST": "Total Fera Cost",
 
     "START_TIME": "Start Time",
     "END_TIME": "End Time",

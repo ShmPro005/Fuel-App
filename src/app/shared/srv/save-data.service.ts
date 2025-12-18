@@ -77,21 +77,21 @@ export class SaveDataService {
 
     // Determine the appropriate history route based on fuelType and calculationType
     if (calculationType === 'FUEL_QUANTITY') {
-      return '/tabs/history/fuel-quantity-calculator-history';
+      return '/tabs/fuel-quantity-calculator-history';
     } else if (calculationType === 'FUEL_QUANTITY_PRICE') {
-      return '/tabs/history/fuel-quantity-price-history';
+      return '/tabs/fuel-quantity-price-history';
     } else if (calculationType === 'RANGE_CALCULATOR') {
-      return '/tabs/history/range-calculator-history';
+      return '/tabs/range-calculator-history';
     } else if (calculationType === 'TIME_CALCULATOR') {
-      return '/tabs/history/time-calculator-history';
+      return '/tabs/time-calculator-history';
     } else if (fuelType === 'TRACTOR') {
-      return '/tabs/history/tractor-history';
+      return '/tabs/tractor-history';
     } else if (fuelType === 'MINI_TRACTOR' || fuelType === 'MINI-TRACTOR') {
-      return '/tabs/history/mini-tractor-history';
+      return '/tabs/mini-tractor-history';
     } else if (fuelType === 'JCB') {
-      return '/tabs/history/jcb-history';
+      return '/tabs/jcb-history';
     } else if (fuelType === 'CAR' || fuelType === 'PETROL' || fuelType === 'DIESEL') {
-      return '/tabs/history/car-history';
+      return '/tabs/car-history';
     } else {
       // Fallback to main history page if no specific route matches
       return '/tabs/history';

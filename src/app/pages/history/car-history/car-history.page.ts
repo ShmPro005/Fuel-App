@@ -163,8 +163,8 @@ export class CarHistoryPage implements OnInit, ViewWillEnter {
 
     Fuel Type: ${fuelType}
 
-    🛣️ Distance: ${record.distance} KM
-    ⛽ Average: ${record.average} KM/L
+    🛣️ Distance: ${record.distance || 'N/A'} KM
+    ⛽ Average: ${record.average || 'N/A'} KM/L
     💰 Fuel Price: ${record.fuelPrice} per/liter}${optionalDataSection}
     --------------------------------------------
     🚗 Total Fuel Cost: $${record.totalCost.toFixed(2)}
@@ -193,8 +193,8 @@ export class CarHistoryPage implements OnInit, ViewWillEnter {
 
     ईंधन प्रकार: ${fuelType}
 
-    🛣️ दूरी: ${record.distance} KM
-    ⛽ औसत: ${record.average} KM/L
+    🛣️ दूरी: ${record.distance || 'N/A'} KM
+    ⛽ औसत: ${record.average || 'N/A'} KM/L
     💰 ईंधन मूल्य: ${record.fuelPrice} प्रति/लीटर}${optionalDataSection}
     ----------------------------------------
     🚗 कुल ईंधन लागत: ₹${record.totalCost.toFixed(2)}
@@ -223,8 +223,8 @@ export class CarHistoryPage implements OnInit, ViewWillEnter {
 
     ઇંધણ પ્રકાર: ${fuelType}
 
-    🛣️ અંતર: ${record.distance} KM
-    ⛽ એવરેજ: ${record.average} KM/L
+    🛣️ અંતર: ${record.distance || 'N/A'} KM
+    ⛽ એવરેજ: ${record.average || 'N/A'} KM/L
     💰 ઇંધણ કિંમત: ${record.fuelPrice} પ્રતિ/લીટર}${optionalDataSection}
     ------------------------------------------
     🚗 કુલ ઇંધણ ખર્ચ: ₹${record.totalCost.toFixed(2)}

@@ -111,40 +111,87 @@ export class FuelQuantityPriceHistoryPage implements OnInit, ViewWillEnter {
   }
 
   async shareRecord(record: any) {
+    const shareAppUrl = 'https://play.google.com/store/apps/details?id=com.msproducts.fuelApp';
+
     await this.utilService.showLoading('Sharing...');
+    const fuelType = record.fuelType;
+    const calculationType = record.calculationType;
 
     const selectedLanguage = this.translateService.currentLang || 'en';
+
     let message = '';
 
-    // Build message with data exactly as displayed in the record
-    if (selectedLanguage === 'en') {
-      message = `Total Fuel Quantity: ${record.fuelQuantity.toFixed(2)} L\n`;
-      message += `Fuel Price: ${record.fuelPrice.toFixed(2)}\n`;
-      if (record.name) message += `Name: ${record.name}\n`;
-      if (record.villageName) message += `Village: ${record.villageName}\n`;
-      if (record.mobile) message += `Mobile: ${record.mobile}\n`;
-      if (record.notes) message += `Notes: ${record.notes}\n`;
-      message += `Date: ${new Date(record.date).toLocaleDateString()}\n`;
-      message += `Total Quantity Fuel Price: ${record.totalCost.toFixed(2)}`;
-    } else if (selectedLanguage === 'hi') {
-      message = `कुल ईंधन मात्रा: ${record.fuelQuantity.toFixed(2)} L\n`;
-      message += `ईंधन मूल्य: ${record.fuelPrice.toFixed(2)}\n`;
-      if (record.name) message += `नाम: ${record.name}\n`;
-      if (record.villageName) message += `गांव: ${record.villageName}\n`;
-      if (record.mobile) message += `मोबाइल: ${record.mobile}\n`;
-      if (record.notes) message += `नोट्स: ${record.notes}\n`;
-      message += `दिनांक: ${new Date(record.date).toLocaleDateString()}\n`;
-      message += `कुल मात्रा ईंधन मूल्य: ${record.totalCost.toFixed(2)}`;
-    } else if (selectedLanguage === 'gu') {
-      message = `કુલ ઇંધણ માત્રા: ${record.fuelQuantity.toFixed(2)} L\n`;
-      message += `ઇંધણ કિંમત: ${record.fuelPrice.toFixed(2)}\n`;
-      if (record.name) message += `નામ: ${record.name}\n`;
-      if (record.villageName) message += `ગામ: ${record.villageName}\n`;
-      if (record.mobile) message += `મોબાઇલ: ${record.mobile}\n`;
-      if (record.notes) message += `નોંધ: ${record.notes}\n`;
-      message += `તારીખ: ${new Date(record.date).toLocaleDateString()}\n`;
-      message += `કુલ માત્રા ઇંધણ કિંમત: ${record.totalCost.toFixed(2)}`;
+    if (calculationType === 'FUEL_QUANTITY_PRICE') {
+      let optionalDataSection = '';
+      if (record.name || record.villageName || record.mobile || record.notes) {
+        if (selectedLanguage === 'en') {
+          if (record.name) optionalDataSection += `\n👤 Name: ${record.name}`;
+          if (record.villageName) optionalDataSection += `\n🏠 Village: ${record.villageName}`;
+          if (record.mobile) optionalDataSection += `\n📱 Mobile: ${record.mobile}`;
+          if (record.notes) optionalDataSection += `\n📝 Notes: ${record.notes}`;
+        } else if (selectedLanguage === 'hi') {
+          if (record.name) optionalDataSection += `\n👤 नाम: ${record.name}`;
+          if (record.villageName) optionalDataSection += `\n🏠 गांव: ${record.villageName}`;
+          if (record.mobile) optionalDataSection += `\n📱 मोबाइल: ${record.mobile}`;
+          if (record.notes) optionalDataSection += `\n📝 नोट्स: ${record.notes}`;
+        } else if (selectedLanguage === 'gu') {
+          if (record.name) optionalDataSection += `\n👤 નામ: ${record.name}`;
+          if (record.villageName) optionalDataSection += `\n🏠 ગામ: ${record.villageName}`;
+          if (record.mobile) optionalDataSection += `\n📱 મોબાઇલ: ${record.mobile}`;
+          if (record.notes) optionalDataSection += `\n📝 નોંધ: ${record.notes}`;
+        }
+      }
+
+      const appDetails: any = {
+        en: `⛽ Fuel Quantity Price Calculator Made Easy! 🚗💨
+    Check out my fuel quantity price calculation details:
+
+    Fuel Type: ${fuelType}
+
+    ⛽ Fuel Quantity: ${record.fuelQuantity} Liters
+    💰 Fuel Price: ${record.fuelPrice} per/liter}${optionalDataSection}
+    --------------------------------------------
+    💸 Total Fuel Cost: $${record.totalCost.toFixed(2)}
+
+    📅 Date: ${new Date(record.date).toLocaleDateString()}
+
+    Easily calculate fuel quantity prices with our app!
+    📲 Download now: ${shareAppUrl}`,
+
+        hi: `⛽ ईंधन मात्रा मूल्य कैलकुलेटर आसान! 🚗💨
+    मेरी ईंधन मात्रा मूल्य कैलकुलेशन का विवरण देखें:
+
+    ईंधन प्रकार: ${fuelType}
+
+    ⛽ ईंधन मात्रा: ${record.fuelQuantity} लीटर
+    💰 ईंधन मूल्य: ${record.fuelPrice} प्रति/लीटर}${optionalDataSection}
+    ----------------------------------------
+    💸 कुल ईंधन लागत: ₹${record.totalCost.toFixed(2)}
+
+    📅 दिनांक: ${new Date(record.date).toLocaleDateString()}
+
+    हमारे ऐप से ईंधन मात्रा मूल्य की गणना करें!
+    📲 अभी डाउनलोड करें: ${shareAppUrl}`,
+
+        gu: `⛽ ઇંધણ માત્રા કિંમત કેલ્ક્યુલેટર સરળ! 🚗💨
+    મારી ઇંધણ માત્રા કિંમત કેલ્ક્યુલેશનનો વિગતવાર જુઓ:
+
+    ઇંધણ પ્રકાર: ${fuelType}
+
+    ⛽ ઇંધણ માત્રા: ${record.fuelQuantity} લીટર
+    💰 ઇંધણ કિંમત: ${record.fuelPrice} પ્રતિ/લીટર}${optionalDataSection}
+    ------------------------------------------
+    💸 કુલ ઇંધણ ખર્ચ: ₹${record.totalCost.toFixed(2)}
+
+    📅 તારીખ: ${new Date(record.date).toLocaleDateString()}
+
+    અમારા એપથી ઇંધણ માત્રા કિંમતની ગણતરી કરો!
+    📲 હમણાં ડાઉનલોડ કરો: ${shareAppUrl}`
+      };
+      message = appDetails[selectedLanguage] || appDetails.en;
     }
+
+    console.log('Share message prepared:', message);
 
     try {
       await Share.share({
