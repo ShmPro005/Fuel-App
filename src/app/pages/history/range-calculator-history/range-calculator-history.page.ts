@@ -193,7 +193,7 @@ export class RangeCalculatorHistoryPage implements OnInit, ViewWillEnter {
       };
       message = appDetails[selectedLanguage] || appDetails.en;
     }
-    console.log('Share message prepared:', message);
+    // console.log('Share message prepared:', message);
     
 
     try {

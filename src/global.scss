@@ -49,6 +49,8 @@ html {
   font-size: calc(100% + 0.5vw);
 }
 body {
+  // --ion-safe-area-top: var(--android-safe-area-top, env(safe-area-inset-top));
+  // --ion-safe-area-left: var(--android-safe-area-left, env(safe-area-inset-bottom));
   --ion-color-dark: #222428;
   --ion-color-dark-rgb: 34, 36, 40;
   --ion-color-dark-contrast: #ffffff;
@@ -56,14 +58,19 @@ body {
   --ion-color-dark-shade: #1e2023;
   --ion-color-dark-tint: #383a3e;
       // Prefer manually defined safe area variables on Android
-      --ion-safe-area-top: var(--android-safe-area-top, env(safe-area-inset-top));
-      --ion-safe-area-left: var(--android-safe-area-left, env(safe-area-inset-left));
-      --ion-safe-area-right: var(--android-safe-area-right, env(safe-area-inset-right));
-      --ion-safe-area-bottom: var(--android-safe-area-bottom, env(safe-area-inset-bottom));
+      // --ion-safe-area-top: var(--android-safe-area-top, env(safe-area-inset-top));
+      // --ion-safe-area-left: var(--android-safe-area-left, env(safe-area-inset-left));
+      // --ion-safe-area-right: var(--android-safe-area-right, env(safe-area-inset-right));
+      // --ion-safe-area-bottom: var(--android-safe-area-bottom, env(safe-area-inset-bottom));
   // background: -webkit-linear-gradient(90deg, hsla(208, 67%, 81%, 1) 0%, hsla(37, 65%, 85%, 1) 50%, hsla(301, 65%, 83%, 1) 100%);
   }
-
+  // ion-app {
+  //   padding-top: calc(var(--ion-safe-area-top, 60) + 65px);
+  //   padding-bottom: calc(var(--ion-safe-area-bottom, 20) + 20px);
+  // }
 html, body, ion-app, ion-content {
+  --ion-safe-area-top: var(--android-safe-area-top, env(safe-area-inset-top));
+  --ion-safe-area-left: var(--android-safe-area-left, env(safe-area-inset-bottom));
   --background: background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 40'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23fff' stroke-width='5' opacity='.1'%3E%3Cpath d='M-345 28s57.5-10 115-10 115 10 115 10S-57.5 38 0 38s115-10 115-10 57.5-10 115-10 115 10 115 10 57.5 10 115 10 115-10 115-10'/%3E%3Cpath d='M-345 14s57.5-10 115-10 115 10 115 10S-57.5 28 0 28s115-10 115-10 57.5-10 115-10 115 10 115 10 57.5 10 115 10 115-10 115-10m-920 22s57.5-10 115-10 115 10 115 10S-57.5 46 0 46s115-10 115-10 57.5-10 115-10 115 10 115 10 57.5 10 115 10 115-10 115-10'/%3E%3C/g%3E%3C/svg%3E%0A"),
   linear-gradient(80deg, #202, #006);
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 55'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23fff' stroke-width='7' opacity='.1'%3E%3Cpath d='M-345 34.5s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 48.3 0 48.3s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 20.7s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 34.5 0 34.5s115-13.8 115-13.8S172.5 6.9 230 6.9s115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8m-920 27.6s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 62.1 0 62.1s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 6.9s57.5-13.8 115-13.8S-115 6.9-115 6.9-57.5 20.7 0 20.7 115 6.9 115 6.9 172.5-6.9 230-6.9 345 6.9 345 6.9s57.5 13.8 115 13.8S575 6.9 575 6.9'/%3E%3Cpath d='M-345-6.9s57.5-13.8 115-13.8S-115-6.9-115-6.9-57.5 6.9 0 6.9 115-6.9 115-6.9s57.5-13.8 115-13.8S345-6.9 345-6.9 402.5 6.9 460 6.9 575-6.9 575-6.9m-920 69s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 75.9 0 75.9s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3C/g%3E%3C/svg%3E%0A"),

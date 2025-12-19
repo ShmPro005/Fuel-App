@@ -107,15 +107,15 @@
       </ion-card>
     </div>
 
-    <ion-card *ngIf="!utilService.isOnline && records.length === 0" class="no-data-card">
+    <!-- <ion-card *ngIf="!utilService.isOnline && records.length === 0" class="no-data-card">
       <ion-card-content>
         {{ 'NO_RECORDS' | translate }}
       </ion-card-content>
-    </ion-card>
+    </ion-card> -->
 
     <!-- Show Message if No Records Are Available -->
-    <div class="no-data-message" *ngIf="!utilService.isLoading && records.length === 0">
+    <!-- <div class="no-data-message" *ngIf="!utilService.isLoading && records.length === 0">
       <p>{{ 'NO_RECORDS' | translate }}</p>
-    </div>
+    </div> -->
   </div>
 </ion-content>
