@@ -33,11 +33,39 @@ export class MiniTractorFuelCostPage {
     this.router.navigate(['/mini-tractor-fuel-calculator']);
   }
 
+  validateTotalHours() {
+    if (this.totalHours) {
+      const parts = this.totalHours.split('.');
+      const hours = parseInt(parts[0]) || 0;
+      const minutes = parseInt(parts[1] || '0');
+
+      // If minutes >= 60, round up to next hour
+      if (minutes >= 60) {
+        this.totalHours = (hours + 1).toString();
+      }
+    }
+  }
+
   calculateMiniTractorFuelCost() {
     if (this.fuelAvgPerHour && this.fuelPrice && this.totalHours) {
       // this.adsService.showAdMobInterstitialAd();
       setTimeout(() => {
-        const fuelNeeded = this.fuelAvgPerHour * this.totalHours;
+        // Parse totalHours as hours.minutes format
+        const parts = this.totalHours.split('.');
+        const hours = parseInt(parts[0]) || 0;
+        const minutes = parseInt(parts[1] || '0');
+        let totalMinutes = hours * 60 + minutes;
+
+        // If minutes >= 60, round up to next hour
+        if (minutes >= 60) {
+          totalMinutes = (hours + 1) * 60;
+        }
+
+        // Calculate per minute fuel consumption
+        const perMinuteFuel = this.fuelAvgPerHour / 60;
+
+        // Calculate total fuel needed
+        const fuelNeeded = perMinuteFuel * totalMinutes;
         this.totalCost = fuelNeeded * this.fuelPrice;
         this.loadingService.stopLoader();
       }, 3000);

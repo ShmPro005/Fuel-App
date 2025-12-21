@@ -27,7 +27,8 @@
 
     <div class="input-group">
       <label class="input-group__label">{{ 'TOTAL_HOURS' | translate }}</label>
-      <input type="number" class="input-group__input" [(ngModel)]="totalHours" />
+      <input type="text" class="input-group__input" [(ngModel)]="totalHours" (input)="validateTotalHours()" />
+      <span class="exmaple">( {{ 'EXAMPLE' | translate }} )</span>
     </div>
 
     <ion-button class="custome-button" (click)="calculateMiniTractorFuelCost()">

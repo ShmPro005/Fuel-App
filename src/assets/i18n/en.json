@@ -38,7 +38,7 @@
     "BIKE": "Bike",
     "CAR": "Car",
     "TRACTOR": "Tractor",
-    "CALCULATE_FUEL_COST": "Car Fuel Calculate",
+    "CALCULATE_FUEL_COST": "Car & Bike Fuel Calculate",
     "CALCULATE_DISTANCE_TIME": "Calculate Distance & Time",
     "CALCULATE_RANGE": "Total Distance Range",
     "CALCULATE_FUEL_QUANTITY": "Fuel Quantity",
