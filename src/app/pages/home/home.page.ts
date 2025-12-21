@@ -26,13 +26,6 @@ export class HomePage implements OnInit {
     }
     // Call setCardHeight on init to set initial sizes
     this.setCardHeight();
-    fetch('https://data.gov.in/api/datastore/resource.json?resource_id=YOUR_RESOURCE_ID&api-key=YOUR_KEY')
-  .then(res => res.json())
-  .then(data => {
-    console.log('Daily mandi prices:', data);
-  })
-  .catch(err => console.error(err));
-
   }
 
   // Listen for window resize events
