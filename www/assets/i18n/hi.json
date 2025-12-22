@@ -37,7 +37,7 @@
     "BIKE": "साइकिल",
     "CAR": "कार",
     "TRACTOR": "ट्रैक्टर",
-    "CALCULATE_FUEL_COST": "Car ईंधन गणना करें",
+    "CALCULATE_FUEL_COST": "Car & Bike ईंधन गणना करें",
     "CALCULATE_DISTANCE_TIME": "दूरी और समय गणना करें",
     "CALCULATE_RANGE": "कुल दूरी",
     "CALCULATE_FUEL_QUANTITY": "ईंधन मात्रा गणना करें",
@@ -152,7 +152,7 @@
     "CANCEL": "रद्द करें",
 
     "JCB_HISTORY": "JCB इतिहास",
-    "CAR_HISTORY": "कार इतिहास",
+    "CAR_HISTORY": "Car & Bike इतिहास",
     "TRACTOR_HISTORY": "ट्रैक्टर इतिहास",
     "MINI_TRACTOR_HISTORY": "मिनी ट्रैक्टर इतिहास",
     "FUEL_QUANTITY_HISTORY": "ईंधन मात्रा इतिहास",

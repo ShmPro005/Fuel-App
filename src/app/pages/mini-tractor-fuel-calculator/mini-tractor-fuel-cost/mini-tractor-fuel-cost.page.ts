@@ -49,6 +49,7 @@ export class MiniTractorFuelCostPage {
   calculateMiniTractorFuelCost() {
     if (this.fuelAvgPerHour && this.fuelPrice && this.totalHours) {
       // this.adsService.showAdMobInterstitialAd();
+      this.loadingService.startLoader();
       setTimeout(() => {
         // Parse totalHours as hours.minutes format
         const parts = this.totalHours.split('.');

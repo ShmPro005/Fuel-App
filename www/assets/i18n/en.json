@@ -38,7 +38,7 @@
     "BIKE": "Bike",
     "CAR": "Car",
     "TRACTOR": "Tractor",
-    "CALCULATE_FUEL_COST": "Car Fuel Calculate",
+    "CALCULATE_FUEL_COST": "Car & Bike Fuel Calculate",
     "CALCULATE_DISTANCE_TIME": "Calculate Distance & Time",
     "CALCULATE_RANGE": "Total Distance Range",
     "CALCULATE_FUEL_QUANTITY": "Fuel Quantity",
@@ -141,7 +141,7 @@
     "CANCEL": "Cancel",
 
     "JCB_HISTORY": "JCB History",
-    "CAR_HISTORY": "Car History",
+    "CAR_HISTORY": "Car & Bike History",
     "TRACTOR_HISTORY": "Tractor History",
     "MINI_TRACTOR_HISTORY": "Mini Tractor History",
     "FUEL_QUANTITY_HISTORY": "Fuel Quantity History",

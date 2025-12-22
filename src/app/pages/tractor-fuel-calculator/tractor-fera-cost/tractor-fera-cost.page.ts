@@ -36,6 +36,7 @@ export class TractorFeraCostPage {
   calculateFeraCost() {
     if (this.distanceKm && this.costPerKm) {
       // this.adsService.showAdMobInterstitialAd();
+      this.loadingService.startLoader();
       setTimeout(() => {
         const baseCost = this.distanceKm * this.costPerKm;
         this.totalCost = baseCost + (this.additionalCharges || 0);
